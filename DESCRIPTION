@@ -1,0 +1,43 @@
+Package: DSOpal
+Version: 0.1.0
+Title: DataSHIELD implementation for Opal
+Authors@R:
+    c(person(given = "Yannick",
+             family = "Marcon",
+             role = c("aut", "cre"),
+             email = "yannick.marcon@obiba.org",
+             comment = c(ORCID = "0000-0003-0138-2023")))
+Depends:
+    R (>= 3.1),
+    opalr, 
+    DSI,
+    methods
+Suggests:
+    knitr
+Description: Data integration Web application for biobanks by OBiBa. Opal is
+    OBiBa's core database application for biobanks. Participant data, once
+    collected from any data source, must be integrated and stored in a central
+    data repository under a uniform model. Opal is such a central repository.
+    It can import, process, validate, query, analyze, report, and export data.
+    Opal is typically used in a research center to analyze the data acquired at
+    assessment centres. Its ultimate purpose is to achieve seamless
+    data-sharing among biobanks.
+License: GPL-3
+URL: https://www.obiba.org
+BugReports: https://github.com/datashield/DSOpal
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+Encoding: UTF-8
+Collate: 
+    'OpalDriver.R'
+    'OpalConnection.R'
+    'OpalResult.R'
+    'datashield.admin.r'
+    'datashield.aggregate.r'
+    'datashield.assign.r'
+    'datashield.command.r'
+    'datashield.method.r'
+    'datashield.status.r'
+    'datashield.symbol.r'
+    'datashield.workspace.r'
+    'utils.R'
