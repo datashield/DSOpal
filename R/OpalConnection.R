@@ -58,7 +58,7 @@ setMethod("dsDisconnect", "OpalConnection", function(conn, save = NULL) {
   }
   try(.rmDatashieldSession(o, save), silent=TRUE)
   o$rid <- NULL
-  #opalr::opal.logout(o)
+  opalr::opal.logout(o)
 })
 
 #' List Opal tables 

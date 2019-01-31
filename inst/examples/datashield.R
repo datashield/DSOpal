@@ -48,5 +48,10 @@ datashield.logout(opals, save = "test")
 
 opals <- datashield.login(logindata, assign=FALSE, restore = "test")
 datashield.symbols(opals)
+datashield.workspaces(opals)
+datashield.workspace_save(opals, "toto")
+datashield.workspaces(opals)
+datashield.workspace_rm(opals, "toto")
+datashield.workspaces(opals)
 datashield.logout(opals)
 
