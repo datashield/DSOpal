@@ -10,22 +10,15 @@
 
 #' Get the DataSHIELD workspaces.
 #' 
-#' @param opal Opal object or list of opal objects.
-#' @rdname datashield.workspaces
-#' @export
-datashield.workspaces=function(opal) {
-  UseMethod('datashield.workspaces');
-}
-
-#' @rdname datashield.workspaces
-#' @export
-datashield.workspaces.opal=function(opal) {
+#' @param opal Opal object.
+#' @keywords internal
+.datashield.workspaces <- function(opal) {
   if (opalr::opal.version_compare(opal,"2.6")<0) {
     warning(opal$name, ": Workspaces are not available for opal ", opal$version, " (2.6.0 or higher is required)")
   } else {
     query <- list(context='DataSHIELD')
     prefix <- paste0('^', opal$name, ':')
-    res <- lapply(.extractJsonField(opalr::opal.get(opal, "service", "r", "workspaces", query=query)),
+    res <- lapply(opalr::opal.get(opal, "service", "r", "workspaces", query=query),
            function(ws) {
              if (grepl(prefix, ws$name)) {
                return(ws)
@@ -49,49 +42,18 @@ datashield.workspaces.opal=function(opal) {
         size <- c(size, ws[[1]]$size)
       }
       data.frame(server=server, name=name, user=user, context=context, lastAccessDate=lastAccessDate, size=size)
+    } else {
+      data.frame()
     }
-  }
-}
-
-#' @rdname datashield.workspaces
-#' @export
-datashield.workspaces.list=function(opal) {
-  res <- lapply(opal, FUN=datashield.workspaces.opal)
-  server <- c()
-  name <- c()
-  user <- c()
-  context <- c()
-  lastAccessDate <- c()
-  size <- c()
-  for (n in names(res)) {
-    wss <- res[[n]]
-    if (!is.character(wss)) {
-      server <- c(server, as.vector(wss$server))
-      name <- c(name, as.vector(wss$name))
-      user <- c(user, as.vector(wss$user))
-      context <- c(context, as.vector(wss$context))
-      lastAccessDate <- c(lastAccessDate, as.vector(wss$lastAccessDate))
-      size <- c(size, as.vector(wss$size))  
-    }
-  }
-  if (length(server)) {
-    data.frame(server=server, name=name, user=user, context=context, lastAccessDate=lastAccessDate, size=size) 
   }
 }
 
 #' Remove a DataSHIELD workspace from a opal.
 #' 
-#' @param opal Opal object or list of opal objects.
+#' @param opal Opal object.
 #' @param ws The workspace name
-#' @rdname datashield.workspace_rm
-#' @export
-datashield.workspace_rm=function(opal, ws) {
-  UseMethod('datashield.workspace_rm');
-}
-
-#' @rdname datashield.workspace_rm
-#' @export
-datashield.workspace_rm.opal=function(opal, ws) {
+#' @keywords internal
+.datashield.workspace_rm <- function(opal, ws) {
   u <- opal$username
   if (is.null(u) || length(u) == 0) {
     stop("User name is missing or empty.")
@@ -103,60 +65,27 @@ datashield.workspace_rm.opal=function(opal, ws) {
   if (opalr::opal.version_compare(opal,"2.6")<0) {
     warning(opal$name, ": Workspaces are not available for opal ", opal$version, " (2.6.0 or higher is required)")
   } else {
-    ignore <- .extractJsonField(opalr::opal.delete(opal, "service", "r", "workspaces", query=query))
+    ignore <- opalr::opal.delete(opal, "service", "r", "workspaces", query=query)
   }
-}
-
-#' @rdname datashield.workspace_rm
-#' @export
-datashield.workspace_rm.list=function(opal, ws) {
-  if (length(ws) == 0) {
-    stop("Workspace name is missing or empty.")
-  }
-  res <- lapply(1:length(opal), function(i) {
-    o <- opal[[i]]
-    wsname <- paste0(o$name, ':', ws)
-    datashield.workspace_rm.opal(o, ws=wsname)
-  })
 }
 
 #' Save current session in a DataSHIELD workspace.
 #' 
-#' @param opal Opal object or list of opal objects.
-#' @param save The workspace name
-#' @rdname datashield.workspace_save
-#' @export
-datashield.workspace_save=function(opal, save) {
-  UseMethod('datashield.workspace_save');
-}
-
-#' @rdname datashield.workspace_save
-#' @export
-datashield.workspace_save.opal=function(opal, save) {
+#' @param opal Opal object.
+#' @param ws The workspace name
+#' @keywords internal
+.datashield.workspace_save <- function(opal, ws) {
   u <- opal$username
   if (is.null(u) || length(u) == 0) {
     stop("User name is missing or empty.")
   }
-  if (length(save) == 0) {
+  if (length(ws) == 0) {
     stop("Workspace name is missing or empty.")
   }
-  query <- list(save=save)
+  query <- list(save=ws)
   if (opalr::opal.version_compare(opal,"2.6")<0) {
     warning(opal$name, ": Workspaces are not available for opal ", opal$version, " (2.6.0 or higher is required)")
   } else {
     ignore <- opalr::opal.post(opal, "datashield", "session", opal$rid, "workspaces", query=query) 
   }
-}
-
-#' @rdname datashield.workspace_save
-#' @export
-datashield.workspace_save.list=function(opal, save) {
-  if (length(save) == 0) {
-    stop("Workspace name is missing or empty.")
-  }
-  res <- lapply(1:length(opal), function(i) {
-    o <- opal[[i]]
-    wsname <- paste0(o$name, ':', save)
-    datashield.workspace_save.opal(o, save=wsname)
-  })
 }

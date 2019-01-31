@@ -277,7 +277,7 @@ dsadmin.get_method <- function(opal, name, type="aggregate") {
 #' @import opalr
 #' @export
 dsadmin.get_methods <- function(opal, type="aggregate") {
-  datashield.methods(opal, type)
+  .datashield.methods(opal, type)
 }
 
 #' Declare Datashield aggregate and assign methods as defined by the package.

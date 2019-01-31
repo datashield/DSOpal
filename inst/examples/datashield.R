@@ -13,6 +13,7 @@ user <- rep("administrator", 3)
 password <- rep("password", 3)
 table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
 logindata <- data.frame(server,url,user,password,table)
+logindata
 opals <- datashield.login(logindata, assign=TRUE, variables=c("GENDER","PM_BMI_CONTINUOUS"))
 print(opals)
 message("**** check assigned variables:")
@@ -37,4 +38,15 @@ datashield.aggregate(opals,'class(x)')
 datashield.assign(opals, "xn", quote(as.numeric(x)))
 datashield.aggregate(opals,'class(xn)')
 
+datashield.methods(opals, type="aggregate")
+datashield.methods(opals$demo1, type="aggregate")
+datashield.method_status(opals, type="assign")
+datashield.pkg_status(opals)
+datashield.table_status(opals, list(demo1="datashield.CNSIM1", demo2="datashield.CNSIM2", demo3="datashield.CNSIM3"))
+
+datashield.logout(opals, save = "test")
+
+opals <- datashield.login(logindata, assign=FALSE, restore = "test")
+datashield.symbols(opals)
 datashield.logout(opals)
+

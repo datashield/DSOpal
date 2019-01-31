@@ -37,7 +37,6 @@ Collate:
     'datashield.assign.r'
     'datashield.command.r'
     'datashield.method.r'
-    'datashield.status.r'
     'datashield.symbol.r'
     'datashield.workspace.r'
     'utils.R'

@@ -18,7 +18,7 @@
   if (!is.null(restore)) {
     query <- list(restore=restore)  
   }
-  res <- .extractJsonField(opalr::opal.post(opal, "datashield", "sessions", query=query), c("id"), isArray=FALSE)
+  res <- opalr::opal.post(opal, "datashield", "sessions", query=query)
   return(res$id)
 }
 
@@ -30,20 +30,6 @@
     query <- list(save=save)
   }
   try(opalr::opal.delete(opal, "datashield", "session", opal$rid, query=query), silent=TRUE)
-}
-
-#' Extract JSON
-#' @keywords internal
-.extractJsonField <- function(json, fields=NULL, isArray=TRUE) {
-  if(is.null(fields)) {
-    json 
-  } else {
-    if(isArray) {
-      lapply(json, function(obj) {obj[fields]})
-    } else {
-      json[fields]
-    }
-  }
 }
 
 #' Turn expression into character strings.

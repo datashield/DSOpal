@@ -8,7 +8,7 @@
   missings = FALSE, identifiers = NULL, tibble = FALSE)
 }
 \arguments{
-\item{opal}{Opal object or list of opal objects.}
+\item{opal}{Opal object.}
 
 \item{symbol}{Name of the R symbol.}
 

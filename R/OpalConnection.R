@@ -9,13 +9,14 @@ setOldClass("opal")
 #' @import DSI
 #' @export
 #' @keywords internal
-setClass("OpalConnection", contains = "DSConnection", slots = list(opal = "opal"))
+setClass("OpalConnection", contains = "DSConnection", slots = list(name = "character", opal = "opal"))
 
 #' Connect to a Opal server
 #' 
 #' Connect to a Opal server, with provided credentials. Does not create a DataSHIELD R session, only retrieves user profile.
 #' 
 #' @param drv \code{\link{OpalDriver-class}} class object.
+#' @param name Name of the connection, which must be unique among all the DataSHIELD connections.
 #' @param username User name in opal(s). Can be provided by "opal.username" option.
 #' @param password User password in opal(s). Can be provided by "opal.password" option.
 #' @param url Opal url or list of opal urls. Can be provided by "opal.url" option.
@@ -29,9 +30,10 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(opal = "opal"
 #' @import methods
 #' @export
 setMethod("dsConnect", "OpalDriver", 
-          function(drv, username = NULL, password = NULL, url = NULL, opts = list(), restore = NULL, ...) {
-            o <- opalr::opal.login(username, password, url, opts, restore)
-            con <- new("OpalConnection", opal = o)
+          function(drv, name, username = NULL, password = NULL, url = NULL, opts = list(), restore = NULL, ...) {
+            o <- opalr::opal.login(username, password, url, opts, restore=restore)
+            o$name <- name
+            con <- new("OpalConnection", name = name, opal = o)
             con
           })
 
@@ -53,11 +55,10 @@ setMethod("dsDisconnect", "OpalConnection", function(conn, save = NULL) {
     if (opalr::opal.version_compare(o,"2.6")<0) {
       warning(o$name, ": Workspaces are not available for opal ", o$version, " (2.6.0 or higher is required)")
     }
-    saveId <- paste0(o$name, ":", save)
   }
-  try(.rmDatashieldSession(o, saveId), silent=TRUE)
+  try(.rmDatashieldSession(o, save), silent=TRUE)
   o$rid <- NULL
-  opalr::opal.logout(o)
+  #opalr::opal.logout(o)
 })
 
 #' List Opal tables 
@@ -156,6 +157,86 @@ setMethod("dsListSymbols", "OpalConnection", function(conn) {
 setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
   o <- conn@opal
   .datashield.rm(o, symbol)
+})
+
+#' List methods
+#' 
+#' List methods defined in the DataSHIELD configuration.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' @param type Type of the method: "aggregate" (default) or "assign".
+#' 
+#' @return A data frame.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListMethods", "OpalConnection", function(conn, type = "aggregate") {
+  o <- conn@opal
+  .datashield.methods(o, type)
+})
+
+#' List packages
+#' 
+#' List packages defined in the DataSHIELD configuration.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @return A data frame.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListPackages", "OpalConnection", function(conn) {
+  o <- conn@opal
+  methods <- rbind(dsListMethods(conn, type = "aggregate"), dsListMethods(conn, type = "assign"))
+  unique(methods[,5:6])
+})
+
+#' List workspaces
+#' 
+#' List workspaces saved in the data repository.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @return A data frame.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListWorkspaces", "OpalConnection", function(conn) {
+  o <- conn@opal
+  .datashield.workspaces(o)
+})
+
+#' Save workspace
+#' 
+#' Save workspace on the data repository.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' @param name Name of the workspace.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsSaveWorkspace", "OpalConnection", function(conn, name) {
+  o <- conn@opal
+  .datashield.workspace_save(o, name)
+})
+
+#' Remove a workspace
+#' 
+#' Remove a workspace on the data repository.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' @param name Name of the workspace.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
+  o <- conn@opal
+  .datashield.workspace_rm(o, name)
 })
 
 #' Assign a table

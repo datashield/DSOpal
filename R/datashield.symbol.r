@@ -14,7 +14,7 @@
 #' 
 #' Remove a symbol from the current Datashield session.
 #' 
-#' @param opal Opal object or list of opal objects.
+#' @param opal Opal object.
 #' @param symbol Name of the R symbol.
 #' @keywords internal
 .datashield.rm <- function(opal, symbol) {

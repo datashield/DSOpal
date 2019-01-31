@@ -5,11 +5,13 @@
 \alias{dsConnect,OpalDriver-method}
 \title{Connect to a Opal server}
 \usage{
-\S4method{dsConnect}{OpalDriver}(drv, username = NULL, password = NULL,
-  url = NULL, opts = list(), restore = NULL, ...)
+\S4method{dsConnect}{OpalDriver}(drv, name, username = NULL,
+  password = NULL, url = NULL, opts = list(), restore = NULL, ...)
 }
 \arguments{
 \item{drv}{\code{\link{OpalDriver-class}} class object.}
+
+\item{name}{Name of the connection, which must be unique among all the DataSHIELD connections.}
 
 \item{username}{User name in opal(s). Can be provided by "opal.username" option.}
 

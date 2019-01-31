@@ -4,7 +4,7 @@
 #' Assign a Opal value to a R symbol in the current Datashield session.
 #' This operation is asynchronous and non blocking.
 #' 
-#' @param opal Opal object or list of opal objects.
+#' @param opal Opal object.
 #' @param symbol Name of the R symbol.
 #' @param value Fully qualified name of a variable or a table in Opal (must be the same in each Opal) or a R expression with allowed assign functions calls.
 #' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods
