@@ -32,7 +32,6 @@ Collate:
     'OpalDriver.R'
     'OpalConnection.R'
     'OpalResult.R'
-    'datashield.admin.r'
     'datashield.aggregate.r'
     'datashield.assign.r'
     'datashield.command.r'

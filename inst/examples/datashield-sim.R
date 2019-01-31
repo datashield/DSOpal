@@ -1,6 +1,6 @@
 library(datashieldclient)
 options(verbose=F)
-logindata <- read.csv("./examples/logindata-demo.csv")
+logindata <- read.csv("./inst/examples/logindata-demo.csv")
 opals<-datashield.login(logindata, assign=T)
 ds.histogram(x='D$LAB_TSC')
 ds.histogram(x='D$LAB_TRIG')
