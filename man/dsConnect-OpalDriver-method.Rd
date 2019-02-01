@@ -5,13 +5,15 @@
 \alias{dsConnect,OpalDriver-method}
 \title{Connect to a Opal server}
 \usage{
-\S4method{dsConnect}{OpalDriver}(drv, name, username = NULL,
-  password = NULL, url = NULL, opts = list(), restore = NULL, ...)
+\S4method{dsConnect}{OpalDriver}(drv, name, restore = NULL,
+  username = NULL, password = NULL, url = NULL, opts = list(), ...)
 }
 \arguments{
 \item{drv}{\code{\link{OpalDriver-class}} class object.}
 
 \item{name}{Name of the connection, which must be unique among all the DataSHIELD connections.}
+
+\item{restore}{Workspace name to be restored in the newly created DataSHIELD R session.}
 
 \item{username}{User name in opal(s). Can be provided by "opal.username" option.}
 
@@ -20,8 +22,6 @@
 \item{url}{Opal url or list of opal urls. Can be provided by "opal.url" option.}
 
 \item{opts}{Curl options as described by httr (call httr::httr_options() for details). Can be provided by "opal.opts" option.}
-
-\item{restore}{Workspace ID to be restored.}
 
 \item{...}{Unused, needed for compatibility with generic.}
 }

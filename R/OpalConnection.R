@@ -17,11 +17,11 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' 
 #' @param drv \code{\link{OpalDriver-class}} class object.
 #' @param name Name of the connection, which must be unique among all the DataSHIELD connections.
+#' @param restore Workspace name to be restored in the newly created DataSHIELD R session.
 #' @param username User name in opal(s). Can be provided by "opal.username" option.
 #' @param password User password in opal(s). Can be provided by "opal.password" option.
 #' @param url Opal url or list of opal urls. Can be provided by "opal.url" option.
 #' @param opts Curl options as described by httr (call httr::httr_options() for details). Can be provided by "opal.opts" option.
-#' @param restore Workspace ID to be restored.
 #' @param ... Unused, needed for compatibility with generic.
 #' 
 #' @return A \code{\link{OpalConnection-class}} object.
@@ -30,7 +30,7 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' @import methods
 #' @export
 setMethod("dsConnect", "OpalDriver", 
-          function(drv, name, username = NULL, password = NULL, url = NULL, opts = list(), restore = NULL, ...) {
+          function(drv, name, restore = NULL, username = NULL, password = NULL, url = NULL, opts = list(), ...) {
             o <- opalr::opal.login(username, password, url, opts, restore=restore)
             o$name <- name
             con <- new("OpalConnection", name = name, opal = o)
@@ -58,7 +58,7 @@ setMethod("dsDisconnect", "OpalConnection", function(conn, save = NULL) {
   }
   try(.rmDatashieldSession(o, save), silent=TRUE)
   o$rid <- NULL
-  opalr::opal.logout(o)
+  #opalr::opal.logout(o)
 })
 
 #' List Opal tables 

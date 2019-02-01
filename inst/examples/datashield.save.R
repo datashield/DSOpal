@@ -4,7 +4,7 @@
 # Opal Datashield client
 #
 
-library(opalr)
+library(DSOpal)
 
 server <- c("cnsim1", "cnsim2", "cnsim3")
 url <- c("http://localhost:8080", "http://localhost:8080", "http://localhost:8080")
