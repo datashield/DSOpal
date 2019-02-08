@@ -5,7 +5,8 @@
 \title{Data assignment}
 \usage{
 .datashield.assign(opal, symbol, value, variables = NULL,
-  missings = FALSE, identifiers = NULL, tibble = FALSE)
+  missings = FALSE, identifiers = NULL, tibble = FALSE,
+  async = TRUE)
 }
 \arguments{
 \item{opal}{Opal object.}
@@ -21,6 +22,8 @@
 \item{identifiers}{Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).}
 
 \item{tibble}{Assign table to a tibble (from tidyverse) instead of a plain data.frame.}
+
+\item{async}{Whether the call should be asynchronous.}
 }
 \value{
 The R command ID if the async flag is TRUE and if the wait flag is FALSE and if Opal version is at least 2.1, NULL otherwise.

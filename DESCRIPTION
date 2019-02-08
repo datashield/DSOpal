@@ -38,4 +38,5 @@ Collate:
     'datashield.method.r'
     'datashield.symbol.r'
     'datashield.workspace.r'
+    'logindata.R'
     'utils.R'

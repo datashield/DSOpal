@@ -7,9 +7,22 @@ dsHasTable(o, "datashield.CNSIM1xx")
 dsIsAsync(o)
 rbind(dsListMethods(o, type = "aggregate"), dsListMethods(o, type = "assign"))
 dsListPackages(o)
-res <- dsAssignTable(o, "D", "datashield.CNSIM1")
+res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
+res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = FALSE)
+dsGetInfo(res)
+dsFetch(res)
+
+res <- dsAggregate(o, "colnames(D)", async = TRUE)
+dsGetInfo(res)
+dsFetch(res)
+
+res <- dsAggregate(o, "colnames(D)", async = FALSE)
+dsGetInfo(res)
+dsFetch(res)
+
+
 dsListSymbols(o)
 dsListWorkspaces(o)
 dsSaveWorkspace(o, "server1:cnsim1")

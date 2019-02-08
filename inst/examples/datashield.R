@@ -14,7 +14,7 @@ password <- rep("password", 3)
 table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
 logindata <- data.frame(server,url,user,password,table)
 logindata
-opals <- datashield.login(logindata, assign=F, variables=c("GENDER","PM_BMI_CONTINUOUS"))
+opals <- datashield.login(logindata, assign=T, variables=c("GENDER","PM_BMI_CONTINUOUS"))
 print(opals)
 # check assigned variables
 datashield.symbols(opals)

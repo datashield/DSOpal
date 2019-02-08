@@ -11,6 +11,7 @@
 #' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
 #' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
 #' @param tibble Assign table to a tibble (from tidyverse) instead of a plain data.frame.
+#' @param async Whether the call should be asynchronous.
 #' 
 #' @return The R command ID if the async flag is TRUE and if the wait flag is FALSE and if Opal version is at least 2.1, NULL otherwise.
 #'
@@ -23,7 +24,7 @@
 #' .datashield.assign(o, symbol="D", value="demo.HOP", variables="name().matches('LAB_')")
 #' }
 #' @keywords internal
-.datashield.assign <- function(opal, symbol, value, variables=NULL, missings=FALSE, identifiers=NULL, tibble=FALSE) {
+.datashield.assign <- function(opal, symbol, value, variables=NULL, missings=FALSE, identifiers=NULL, tibble=FALSE, async=TRUE) {
   if(is.language(value) || is.function(value)) {
     contentType <- "application/x-rscript"
     body <- .deparse(value)
@@ -57,7 +58,7 @@
     stop("Invalid value type: '", class(value), "'. Use quote() to protect from early evaluation.")
   }
   
-  query["async"] <- "true"
+  query["async"] <- ifelse(async, "true", "false")
   if (tibble) {
     query["class"] <- "tibble"
   }

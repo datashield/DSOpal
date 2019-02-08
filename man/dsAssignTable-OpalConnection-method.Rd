@@ -6,7 +6,8 @@
 \title{Assign a table}
 \usage{
 \S4method{dsAssignTable}{OpalConnection}(conn, symbol, table,
-  variables = NULL, missings = FALSE, identifiers = NULL)
+  variables = NULL, missings = FALSE, identifiers = NULL,
+  async = TRUE)
 }
 \arguments{
 \item{conn}{\code{\link{OpalConnection-class}} object.}
@@ -20,6 +21,9 @@
 \item{missings}{If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.}
 
 \item{identifiers}{Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).}
+
+\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+the connections, when the connection supports that feature, with an extra overhead of requests.}
 }
 \value{
 A \code{\link{OpalResult-class}} object.

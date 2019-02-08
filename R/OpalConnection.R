@@ -249,15 +249,21 @@ setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
 #' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods
 #' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
 #' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
+#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+#'   the connections, when the connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
 #' @import methods
 #' @export
-setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, variables=NULL, missings=FALSE, identifiers=NULL) {
+setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, variables=NULL, missings=FALSE, identifiers=NULL, async=TRUE) {
   o <- conn@opal
-  rid <- .datashield.assign(o, symbol, value=table, variables, missings, identifiers)
-  new("OpalResult", conn = conn, rid = rid)
+  rval <- .datashield.assign(o, symbol, value=table, variables, missings, identifiers, async=async)
+  if (async) {
+    new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
+  } else {
+    new("OpalResult", conn = conn, rval = list(rid = NULL, result = rval))
+  }
 })
 
 #' Assign the result of an expression
@@ -267,15 +273,21 @@ setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, varia
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param symbol Name of the R symbol.
 #' @param expr A R expression with allowed assign functions calls.
+#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+#'   the connections, when the connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
 #' @import methods
 #' @export
-setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr) {
+setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr, async=TRUE) {
   o <- conn@opal
-  rid <- .datashield.assign(o, symbol, value=expr)
-  new("OpalResult", conn = conn, rid = rid)
+  rval <- .datashield.assign(o, symbol, value=expr, async=async)
+  if (async) {
+    new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
+  } else {
+    new("OpalResult", conn = conn, rval = list(rid = NULL, result = rval))
+  }
 })
 
 #' Aggregate data
@@ -285,6 +297,8 @@ setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr) {
 #'
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param expr Expression to evaluate.
+#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+#'   the connections, when the connection supports that feature, with an extra overhead of requests.
 #'
 #' @examples
 #' \dontrun{
@@ -295,8 +309,12 @@ setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr) {
 #' }
 #' @import methods
 #' @export
-setMethod("dsAggregate", "OpalConnection", function(conn, expr) {
+setMethod("dsAggregate", "OpalConnection", function(conn, expr, async=TRUE) {
   o <- conn@opal
-  rid <- .datashield.aggregate(o, expr)
-  new("OpalResult", conn = conn, rid = rid)
+  rval <- .datashield.aggregate(o, expr, async)
+  if (async) {
+    new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
+  } else {
+    new("OpalResult", conn = conn, rval = list(rid = NULL, result = rval))
+  }
 })

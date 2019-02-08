@@ -5,12 +5,15 @@
 \alias{dsAggregate,OpalConnection-method}
 \title{Aggregate data}
 \usage{
-\S4method{dsAggregate}{OpalConnection}(conn, expr)
+\S4method{dsAggregate}{OpalConnection}(conn, expr, async = TRUE)
 }
 \arguments{
 \item{conn}{\code{\link{OpalConnection-class}} object.}
 
 \item{expr}{Expression to evaluate.}
+
+\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+the connections, when the connection supports that feature, with an extra overhead of requests.}
 }
 \description{
 Aggregate some data from the DataSHIELD R session using a valid R expression. The aggregation expression

@@ -11,7 +11,7 @@ NULL
 #' @keywords internal
 setClass("OpalResult", contains = "DSResult", slots = list(
   conn = "OpalConnection",
-  rid = "character"))
+  rval = "list"))
 
 #' Get result info
 #' 
@@ -25,8 +25,12 @@ setClass("OpalResult", contains = "DSResult", slots = list(
 #' @import methods
 #' @export
 setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
-  o <- dsObj@conn@opal
-  .datashield.command(o, dsObj@rid, wait=TRUE)
+  if (is.null(dsObj@rval$rid)) {
+    list(status="COMPLETED")
+  } else {
+    o <- dsObj@conn@opal
+    .datashield.command(o, dsObj@rval$rid, wait=TRUE)  
+  }
 })
 
 #' Fetch the result
@@ -41,8 +45,12 @@ setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
 #' @import methods
 #' @export
 setMethod("dsFetch", "OpalResult", function(res) {
-  o <- res@conn@opal
-  .datashield.command_result(o, res@rid, wait = TRUE)
+  if (is.null(res@rval$rid)) {
+    res@rval$result
+  } else {
+    o <- res@conn@opal
+    .datashield.command_result(o, res@rval$rid, wait = TRUE)
+  }
 })
 
 

@@ -4,15 +4,17 @@
 \alias{.datashield.aggregate}
 \title{Data aggregation}
 \usage{
-.datashield.aggregate(opal, expr)
+.datashield.aggregate(opal, expr, async = TRUE)
 }
 \arguments{
 \item{opal}{Opal object or list of opal objects.}
 
 \item{expr}{Expression to evaluate.}
+
+\item{async}{Whether the call should be asynchronous.}
 }
 \value{
-The R command ID to be used to retrieve the command result.
+The R command ID to be used to retrieve the command result (when async) or the agregated value.
 }
 \description{
 Aggregates the expression result using the specified aggregation method in the current Datashield session.

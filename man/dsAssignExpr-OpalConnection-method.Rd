@@ -5,7 +5,7 @@
 \alias{dsAssignExpr,OpalConnection-method}
 \title{Assign the result of an expression}
 \usage{
-\S4method{dsAssignExpr}{OpalConnection}(conn, symbol, expr)
+\S4method{dsAssignExpr}{OpalConnection}(conn, symbol, expr, async = TRUE)
 }
 \arguments{
 \item{conn}{\code{\link{OpalConnection-class}} object.}
@@ -13,6 +13,9 @@
 \item{symbol}{Name of the R symbol.}
 
 \item{expr}{A R expression with allowed assign functions calls.}
+
+\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+the connections, when the connection supports that feature, with an extra overhead of requests.}
 }
 \value{
 A \code{\link{OpalResult-class}} object.
