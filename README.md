@@ -1,5 +1,7 @@
 # DataSHIELD Opal
 
+[![Build Status](https://travis-ci.org/datashield/DSOpal.svg?branch=master)](https://travis-ci.org/datashield/DSOpal)
+
 [DataSHIELD Interface (DSI)](https://github.com/datashield/DSI/) implementation for 
 [Opal](https://www.obiba.org/pages/products/opal/) data repository, based on 
 [Opal R Client (opalr)](https://github.com/obiba/opalr) package.

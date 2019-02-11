@@ -4,4 +4,8 @@ addons:
   apt:
     packages:
       - libxml2-dev
+install:
+- R -e 'devtools::install_deps("datashield/DSI")'
+- R -e 'devtools::install_deps("obiba/opalr")'
+- R -e 'devtools::install_deps(dep = T)'
 warnings_are_errors: true
