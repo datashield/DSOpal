@@ -7,6 +7,7 @@ dsHasTable(o, "datashield.CNSIM1xx")
 dsIsAsync(o)
 rbind(dsListMethods(o, type = "aggregate"), dsListMethods(o, type = "assign"))
 dsListPackages(o)
+
 res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
