@@ -36,7 +36,7 @@ datashield.methods(opals, type="aggregate")
 datashield.methods(opals$server1, type="aggregate")
 datashield.method_status(opals, type="assign")
 datashield.pkg_status(opals)
-datashield.table_status(opals, list(demo1="datashield.CNSIM1", demo2="datashield.CNSIM2", demo3="datashield.CNSIM3"))
+datashield.table_status(opals, list(server1="datashield.CNSIM1", server2="datashield.CNSIM2", server3="datashield.CNSIM3"))
 
 datashield.logout(opals, save = "test")
 
