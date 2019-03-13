@@ -26,22 +26,18 @@
            })
     wss <- res[lapply(res, is.null) != TRUE]
     if (length(wss)) {
-      server <- c()
       name <- c()
       user <- c()
-      context <- c()
       lastAccessDate <- c()
       size <- c()
       for (i in 1:length(wss)) {
         ws <- wss[i]
-        server <- c(server, opal$name)
         name <- c(name, ws[[1]]$name)
         user <- c(user, ws[[1]]$user)
-        context <- c(context, ws[[1]]$context)
         lastAccessDate <- c(lastAccessDate, ws[[1]]$lastAccessDate)
         size <- c(size, ws[[1]]$size)
       }
-      data.frame(server=server, name=name, user=user, context=context, lastAccessDate=lastAccessDate, size=size)
+      data.frame(name=name, user=user, lastAccessDate=lastAccessDate, size=size)
     } else {
       data.frame()
     }
