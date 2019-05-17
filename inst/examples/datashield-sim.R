@@ -4,6 +4,10 @@ library(dsBaseClient)
 data("logindata.opal.demo")
 opals<-datashield.login(logindata.opal.demo, assign=T)
 
+datashield.pkg_status(opals)
+datashield.method_status(opals)
+datashield.methods(opals)
+
 #ds.histogram(x='D$LAB_TSC')
 #ds.histogram(x='D$LAB_GLUC_ADJUSTED')
 #ds.histogram(x='D$PM_BMI_CONTINUOUS')

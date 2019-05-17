@@ -5,8 +5,8 @@
 \title{Data assignment}
 \usage{
 .datashield.assign(opal, symbol, value, variables = NULL,
-  missings = FALSE, identifiers = NULL, tibble = FALSE,
-  async = TRUE)
+  missings = FALSE, identifiers = NULL, id.name = NULL,
+  tibble = FALSE, async = TRUE)
 }
 \arguments{
 \item{opal}{Opal object.}
@@ -20,6 +20,9 @@
 \item{missings}{If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.}
 
 \item{identifiers}{Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).}
+
+\item{id.name}{Name of the column that will contain the entity identifiers. If not specified, the identifiers
+will be the data frame row names. When specified this column can be used to perform joins between data frames.}
 
 \item{tibble}{Assign table to a tibble (from tidyverse) instead of a plain data.frame.}
 

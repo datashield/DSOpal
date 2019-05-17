@@ -11,11 +11,12 @@ dsListPackages(o)
 res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
-res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = FALSE)
+
+res <- dsAggregate(o, "colnames(D)", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 
-res <- dsAggregate(o, "colnames(D)", async = TRUE)
+res <- dsAssignTable(o, "D", "datashield.CNSIM1", id.name="id", async = FALSE)
 dsGetInfo(res)
 dsFetch(res)
 

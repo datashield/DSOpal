@@ -10,6 +10,8 @@
 #' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods
 #' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
 #' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
+#' @param id.name Name of the column that will contain the entity identifiers. If not specified, the identifiers
+#'   will be the data frame row names. When specified this column can be used to perform joins between data frames.
 #' @param tibble Assign table to a tibble (from tidyverse) instead of a plain data.frame.
 #' @param async Whether the call should be asynchronous.
 #' 
@@ -24,7 +26,7 @@
 #' .datashield.assign(o, symbol="D", value="demo.HOP", variables="name().matches('LAB_')")
 #' }
 #' @keywords internal
-.datashield.assign <- function(opal, symbol, value, variables=NULL, missings=FALSE, identifiers=NULL, tibble=FALSE, async=TRUE) {
+.datashield.assign <- function(opal, symbol, value, variables=NULL, missings=FALSE, identifiers=NULL, id.name=NULL, tibble=FALSE, async=TRUE) {
   if(is.language(value) || is.function(value)) {
     contentType <- "application/x-rscript"
     body <- .deparse(value)
@@ -51,8 +53,11 @@
       variableFilter <- paste("name().any('", paste(variableFilter, sep="", collapse="','"), "')", sep="")
     }
     query <- list(missings=missings, variables=variableFilter)
-    if (!is.null(identifiers)) {
+    if (!is.null(identifiers) && identifiers != "") {
       query["identifiers"] <- identifiers
+    }
+    if (!is.null(id.name) && id.name != "") {
+      query["id"] <- id.name
     }
   } else {
     stop("Invalid value type: '", class(value), "'. Use quote() to protect from early evaluation.")
@@ -63,5 +68,8 @@
     query["class"] <- "tibble"
   }
   ignore <- .getDatashieldSessionId(opal)
+  if ("id" %in% names(query) && opalr::opal.version_compare(opal,"2.14")<0) {
+    warning(opal$name, ": Identifiers column name parameter is not suppported by opal ", opal$version, " (2.14.0 or higher is required)")
+  }
   opalr::opal.put(opal, "datashield", "session", opal$rid, "symbol", symbol, query=query, body=body, contentType=contentType)
 }
