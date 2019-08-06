@@ -6,7 +6,8 @@
 \title{Connect to a Opal server}
 \usage{
 \S4method{dsConnect}{OpalDriver}(drv, name, restore = NULL,
-  username = NULL, password = NULL, url = NULL, opts = list(), ...)
+  username = NULL, password = NULL, token = NULL, url = NULL,
+  opts = list(), ...)
 }
 \arguments{
 \item{drv}{\code{\link{OpalDriver-class}} class object.}
@@ -15,9 +16,11 @@
 
 \item{restore}{Workspace name to be restored in the newly created DataSHIELD R session.}
 
-\item{username}{User name in opal(s). Can be provided by "opal.username" option.}
+\item{username}{User name in opal(s).}
 
-\item{password}{User password in opal(s). Can be provided by "opal.password" option.}
+\item{password}{User password in opal(s).}
+
+\item{token}{Personal access token (since opal 2.15, ignored if username is specified).}
 
 \item{url}{Opal url or list of opal urls. Can be provided by "opal.url" option.}
 
