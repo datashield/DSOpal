@@ -16,7 +16,11 @@
   if (opalr::opal.version_compare(opal,"2.6")<0) {
     warning(opal$name, ": Workspaces are not available for opal ", opal$version, " (2.6.0 or higher is required)")
   } else {
-    query <- list(context='DataSHIELD')
+    u <- opal$username
+    if (is.null(u) || length(u) == 0) {
+      stop("User name is missing or empty.")
+    }
+    query <- list(context='DataSHIELD', user=u)
     prefix <- paste0('^', opal$name, ':')
     res <- lapply(opalr::opal.get(opal, "service", "r", "workspaces", query=query),
            function(ws) {
