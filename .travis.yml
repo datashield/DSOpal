@@ -7,6 +7,6 @@ addons:
 r_packages:
   - devtools
 r_github_packages:
-  - datashield/DSI
-  - obiba/opalr
+  - datashield/DSI@resources
+  - obiba/opalr@resources
 warnings_are_errors: true

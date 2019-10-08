@@ -13,7 +13,7 @@
 
 \item{symbol}{Name of the R symbol.}
 
-\item{value}{Fully qualified name of a variable or a table in Opal (must be the same in each Opal) or a R expression with allowed assign functions calls.}
+\item{value}{Fully qualified name of a variable or a table in Opal or a R expression with allowed assign functions calls.}
 
 \item{variables}{List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods}
 

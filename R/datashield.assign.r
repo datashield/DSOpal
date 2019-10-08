@@ -6,7 +6,7 @@
 #' 
 #' @param opal Opal object.
 #' @param symbol Name of the R symbol.
-#' @param value Fully qualified name of a variable or a table in Opal (must be the same in each Opal) or a R expression with allowed assign functions calls.
+#' @param value Fully qualified name of a variable or a table in Opal or a R expression with allowed assign functions calls.
 #' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods
 #' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
 #' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
@@ -72,4 +72,32 @@
     warning(opal$name, ": Identifiers column name parameter is not suppported by opal ", opal$version, " (2.14.0 or higher is required)")
   }
   opalr::opal.put(opal, "datashield", "session", opal$rid, "symbol", symbol, query=query, body=body, contentType=contentType)
+}
+
+
+#' Data assignment
+#' 
+#' Assign a Opal value to a R symbol in the current Datashield session.
+#' This operation is asynchronous and non blocking.
+#' 
+#' @param opal Opal object.
+#' @param symbol Name of the R symbol.
+#' @param value Fully qualified name of a resource in Opal.
+#' @param async Whether the call should be asynchronous.
+#' 
+#' @return The R command ID if the async flag is TRUE and if the wait flag is FALSE and if Opal version is at least 2.1, NULL otherwise.
+#'
+#' @examples 
+#' \dontrun{
+#' # assign a resource
+#' .datashield.assign.resource(o, symbol="D", value="demo.HOPr")
+#' }
+#' @keywords internal
+.datashield.assign.resource <- function(opal, symbol, value, async=TRUE) {
+  if (opalr::opal.version_compare(opal,"2.16")<0) {
+    stop("Resources require Opal 2.16 or higher", call. = FALSE)
+  }
+  query <- list()
+  query["async"] <- ifelse(async, "true", "false")
+  res <- opalr::opal.put(opal, "datashield", "session", opal$rid, "symbol", symbol, "resource", value, query=query)
 }
