@@ -24,12 +24,12 @@ stat.mean <- datashield.aggregate(opals, quote(meanDS(D$LAB_TSC)), async=TRUE)
 #print(stat.mean)
 
 test_that("mean values", { 
-  expect_false(is.na(stat.mean$sim1))
-  expect_equal(stat.mean$sim1, 5.87211344770338, tolerance = .000000000000001)
-  expect_false(is.na(stat.mean$sim2))
-  expect_equal(stat.mean$sim2, 5.84526388341867, tolerance = .000000000000001)
-  expect_false(is.na(stat.mean$sim3))
-  expect_equal(stat.mean$sim3, 5.84630008623168, tolerance = .000000000000001)
+  expect_false(is.null(stat.mean$sim1))
+  expect_equal(stat.mean$sim1$EstimatedMean, 5.87211344770338, tolerance = .000000000000001)
+  expect_false(is.null(stat.mean$sim2))
+  expect_equal(stat.mean$sim2$EstimatedMean, 5.84526388341867, tolerance = .000000000000001)
+  expect_false(is.null(stat.mean$sim3))
+  expect_equal(stat.mean$sim3$EstimatedMean, 5.84630008623168, tolerance = .000000000000001)
 })
 
 context("dsbase::quantileMeanDS")
