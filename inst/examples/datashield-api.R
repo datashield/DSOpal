@@ -13,6 +13,7 @@ res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 
+dsListResources(o)
 res <- dsAssignResource(o, "R1", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)

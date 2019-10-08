@@ -116,6 +116,28 @@ setMethod("dsHasTable", "OpalConnection", function(conn, table) {
   }
 })
 
+#' List Opal resources 
+#' 
+#' List Opal resources that may be accessible for performing DataSHIELD operations.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @return The fully qualified names of the resources.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListResources", "OpalConnection", function(conn) {
+  o <- conn@opal
+  resources <- c()
+  for (proj in opalr::opal.get(o, "projects")) {
+    for (res in opalr::opal.resources(o, proj$name, df = FALSE)) {
+      resources <- append(resources, paste0(proj$name, ".", res$name))
+    }
+  }
+  resources
+})
+
 #' Verify Opal resource 
 #' 
 #' Verify Opal resource exist and can be accessible for performing DataSHIELD operations.
