@@ -14,7 +14,8 @@ dsGetInfo(res)
 dsFetch(res)
 
 dsListResources(o)
-res <- dsAssignResource(o, "R1", "datashield.CNSIM1", async = TRUE)
+dsHasResource(o, "datashield.cnsim3")
+res <- dsAssignResource(o, "R1", "datashield.cnsim3", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 

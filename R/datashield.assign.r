@@ -94,6 +94,7 @@
 #' }
 #' @keywords internal
 .datashield.assign.resource <- function(opal, symbol, value, async=TRUE) {
+  ignore <- .getDatashieldSessionId(opal)
   if (opalr::opal.version_compare(opal,"2.16")<0) {
     stop("Resources require Opal 2.16 or higher", call. = FALSE)
   }
