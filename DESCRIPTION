@@ -23,7 +23,7 @@ Description: DataSHIELD implementation for Opal which is
     Opal is typically used in a research center to analyze the data acquired at
     assessment centres. Its ultimate purpose is to achieve seamless
     data-sharing among biobanks.
-License: GPL-3
+License: LGPL (>= 2.1)
 URL: https://www.obiba.org https://www.obiba.org/pages/products/opal/ http://www.datashield.ac.uk
 BugReports: https://github.com/datashield/DSOpal
 RoxygenNote: 6.1.1
