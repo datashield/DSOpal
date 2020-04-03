@@ -6,7 +6,8 @@ addons:
       - libxml2-dev
 r_packages:
   - devtools
+  - resourcer
 r_github_packages:
-  - datashield/DSI@resources
-  - obiba/opalr@resources
+  - datashield/DSI@master
+  - obiba/opalr@master
 warnings_are_errors: true
