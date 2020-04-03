@@ -13,12 +13,6 @@ res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 
-dsListResources(o)
-dsHasResource(o, "datashield.cnsim3")
-res <- dsAssignResource(o, "R1", "datashield.cnsim3", async = TRUE)
-dsGetInfo(res)
-dsFetch(res)
-
 res <- dsAggregate(o, "colnames(D)", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
