@@ -105,7 +105,59 @@ setMethod("dsHasTable", "OpalConnection", function(conn, table) {
     res <- tryCatch(opalr::opal.table(o, datasource = parts[1], table = paste(parts[2:length(parts)], collapse = ".")), 
              error = function(cond) {
                NULL
-             })  
+             })
+    if (is.null(res)) {
+      FALSE
+    } else {
+      TRUE
+    }
+  } else {
+    FALSE
+  }
+})
+
+#' List Opal resources 
+#' 
+#' List Opal resources that may be accessible for performing DataSHIELD operations.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @return The fully qualified names of the resources.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListResources", "OpalConnection", function(conn) {
+  o <- conn@opal
+  resources <- c()
+  for (proj in opalr::opal.get(o, "projects")) {
+    for (res in opalr::opal.resources(o, proj$name, df = FALSE)) {
+      resources <- append(resources, paste0(proj$name, ".", res$name))
+    }
+  }
+  resources
+})
+
+#' Verify Opal resource 
+#' 
+#' Verify Opal resource exist and can be accessible for performing DataSHIELD operations.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object.
+#' @param resource The fully qualified name of the resource.
+#' 
+#' @return TRUE if the resource exists.
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsHasResource", "OpalConnection", function(conn, resource) {
+  o <- conn@opal
+  parts <- unlist(strsplit(resource, "\\."))
+  if (length(parts) > 1) {
+    res <- tryCatch(opalr::opal.resource(o, project = parts[1], resource = paste(parts[2:length(parts)], collapse = ".")), 
+                    error = function(cond) {
+                      NULL
+                    })
     if (is.null(res)) {
       FALSE
     } else {
@@ -127,7 +179,7 @@ setMethod("dsHasTable", "OpalConnection", function(conn, table) {
 #' @import methods
 #' @export
 setMethod("dsIsAsync", "OpalConnection", function(conn) {
-  list(aggregate = TRUE, assignTable = TRUE, assignExpr = TRUE)
+  list(aggregate = TRUE, assignTable = TRUE, assignResource = TRUE, assignExpr = TRUE)
 })
 
 #' List R symbols
@@ -262,6 +314,30 @@ setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
 setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, variables=NULL, missings=FALSE, identifiers=NULL, id.name=NULL, async=TRUE) {
   o <- conn@opal
   rval <- .datashield.assign(o, symbol, value=table, variables, missings, identifiers, id.name, async=async)
+  if (async) {
+    new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
+  } else {
+    new("OpalResult", conn = conn, rval = list(rid = NULL, result = rval))
+  }
+})
+
+#' Assign a resource
+#' 
+#' Assign a Opal resource in the DataSHIELD R session.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} object.
+#' @param symbol Name of the R symbol.
+#' @param resource Fully qualified name of a resource in Opal.
+#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
+#'   the connections, when the connection supports that feature, with an extra overhead of requests.
+#' 
+#' @return A \code{\link{OpalResult-class}} object.
+#' 
+#' @import methods
+#' @export
+setMethod("dsAssignResource", "OpalConnection", function(conn, symbol, resource, async=TRUE) {
+  o <- conn@opal
+  rval <- .datashield.assign.resource(o, symbol, value=resource, async=async)
   if (async) {
     new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
   } else {

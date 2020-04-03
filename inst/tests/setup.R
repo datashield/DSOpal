@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2017 OBiBa. All rights reserved.
+# Copyright (c) 2019 OBiBa. All rights reserved.
 #  
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,22 +12,25 @@
 # Datashield test suite set up
 #
 
-library(opalr)
+library(DSOpal)
 library(testthat)
 
 options(verbose=FALSE)
 
 options(opal.username='administrator', 
         opal.password='password', 
-        opal.url='https://opal-demo.obiba.org')
+        opal.url='https://opal-demo.obiba.org'
+        #opal.url='http://localhost:8080'
+        )
 
-server <- c("sim1", "sim2", "sim3")
-url <- c(getOption("opal.url"), getOption("opal.url"), getOption("opal.url"))
-user <- c(getOption("opal.username"), getOption("opal.username"), getOption("opal.username"))
-password <- c(getOption("opal.password"), getOption("opal.password"), getOption("opal.password"))
-table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
-logindata <- data.frame(server,url,user,password,table)
+builder <- newDSLoginBuilder()
+builder$append(server="sim1", url=getOption("opal.url"), table="datashield.CNSIM1",
+               user=getOption("opal.username"), password=getOption("opal.password"))
+builder$append(server="sim2", url=getOption("opal.url"), table="datashield.CNSIM2",
+               user=getOption("opal.username"), password=getOption("opal.password"))
+builder$append(server="sim3", url=getOption("opal.url"), table="datashield.CNSIM3",
+               user=getOption("opal.username"), password=getOption("opal.password"))
+logindata <- builder$build()
 
 myvar <- list("LAB_TSC", "LAB_HDL")
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
+opals <- datashield.login(logins = logindata, assign = TRUE, variables = myvar)

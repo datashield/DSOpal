@@ -13,7 +13,21 @@ res <- dsAssignTable(o, "D", "datashield.CNSIM1", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 
+dsListResources(o)
+dsHasResource(o, "datashield.cnsim3")
+res <- dsAssignResource(o, "R1", "datashield.cnsim3", async = TRUE)
+dsGetInfo(res)
+dsFetch(res)
+
 res <- dsAggregate(o, "colnames(D)", async = TRUE)
+dsGetInfo(res)
+dsFetch(res)
+
+res <- dsAggregate(o, "class(D)", async = TRUE)
+dsGetInfo(res)
+dsFetch(res)
+
+res <- dsAggregate(o, "class(R1)", async = TRUE)
 dsGetInfo(res)
 dsFetch(res)
 
@@ -24,7 +38,6 @@ dsFetch(res)
 res <- dsAggregate(o, "colnames(D)", async = FALSE)
 dsGetInfo(res)
 dsFetch(res)
-
 
 dsListSymbols(o)
 dsListWorkspaces(o)
