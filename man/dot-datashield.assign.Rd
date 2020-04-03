@@ -4,9 +4,17 @@
 \alias{.datashield.assign}
 \title{Data assignment}
 \usage{
-.datashield.assign(opal, symbol, value, variables = NULL,
-  missings = FALSE, identifiers = NULL, id.name = NULL,
-  tibble = FALSE, async = TRUE)
+.datashield.assign(
+  opal,
+  symbol,
+  value,
+  variables = NULL,
+  missings = FALSE,
+  identifiers = NULL,
+  id.name = NULL,
+  tibble = FALSE,
+  async = TRUE
+)
 }
 \arguments{
 \item{opal}{Opal object.}

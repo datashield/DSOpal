@@ -22,7 +22,7 @@ Description: 'DataSHIELD' implementation for 'Opal' which is
 License: LGPL (>= 2.1)
 URL: https://www.obiba.org https://www.obiba.org/pages/products/opal/ http://www.datashield.ac.uk
 BugReports: https://github.com/datashield/DSOpal
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Encoding: UTF-8
 Collate: 
     'OpalDriver.R'
