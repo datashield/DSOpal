@@ -5,8 +5,21 @@
 \alias{logindata.opal.demo}
 \title{DataSHIELD login data file}
 \description{
-DataSHIELD login data file based on Opal demo server, with simulated data. Note that
-the Opal demo server is rebuilt every day and is possibly not accessible.
+DataSHIELD login data file based on Opal demo server, with CNSIM simulated data. The CNSIM datasets contain
+synthetic data based on a model derived from the participants of the 1958 Birth Cohort,
+as part of the obesity methodological development project. These datasets do contain some
+NA values. Note that the Opal demo server is rebuilt every day and is possibly not accessible.
+}
+\details{
+\tabular{llll}{
+   \strong{Field} \tab \strong{Description} \tab \strong{Type} \tab \strong{Note} \cr
+   server \tab Server/study name \tab char \tab  \cr
+   url \tab Server/study URL \tab char \tab Opal demo URL \cr
+   user \tab User name \tab char \tab  \cr
+   password \tab User password \tab char \tab  \cr
+   table \tab Table unique name \tab char \tab CNSIM tables \cr
+   driver \tab Connection driver \tab char \tab OpalDriver \cr
+}
 }
 \references{
 \url{https://opal-demo.obiba.org}
