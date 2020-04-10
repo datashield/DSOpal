@@ -7,5 +7,5 @@
 Opal()
 }
 \description{
-Convenient function for creating a [OpalDriver] object.
+Convenient function for creating a OpalDriver object.
 }

@@ -1,6 +1,6 @@
 Package: DSOpal
 Type: Package
-Title: 'DataSHIELD' implementation for 'Opal'
+Title: 'DataSHIELD' Implementation for 'Opal'
 Version: 1.0.0
 Authors@R:
     c(person(given = "Yannick",
@@ -13,16 +13,19 @@ Depends:
     opalr (>= 1.3), 
     DSI (>= 1.0),
     methods
-Description: 'DataSHIELD' implementation for 'Opal' which is
+Description: 'DataSHIELD' is an infrastructure and series of R packages that 
+    enables the remote and 'non-disclosive' analysis of sensitive research data.
+    This package is the 'DataSHIELD' interface implementation for 'Opal', which is
     the data integration application for biobanks by 'OBiBa'. Participant data, once
     collected from any data source, must be integrated and stored in a central
     data repository under a uniform model. 'Opal' is such a central repository.
     It can import, process, validate, query, analyze, report, and export data.
     'Opal' is the reference implementation of the 'DataSHIELD' infrastructure.
 License: LGPL (>= 2.1)
-URL: https://www.obiba.org https://www.obiba.org/pages/products/opal/ http://www.datashield.ac.uk
+URL: https://www.obiba.org https://www.obiba.org/pages/products/opal/ http://www.datashield.ac.uk https://doi.org/10.1093/ije/dyu188
 BugReports: https://github.com/datashield/DSOpal
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
+Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Collate: 
     'OpalDriver.R'
