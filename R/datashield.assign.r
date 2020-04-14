@@ -16,15 +16,6 @@
 #' @param async Whether the call should be asynchronous.
 #' 
 #' @return The R command ID if the async flag is TRUE and if the wait flag is FALSE and if Opal version is at least 2.1, NULL otherwise.
-#'
-#' @examples 
-#' \dontrun{
-#' # assign a list of variables from table HOP of opal object o
-#' .datashield.assign(o, symbol="D", value="demo.HOP", variables=list("GENDER","LAB_GLUC"))
-#' 
-#' # assign all the variables matching 'LAB' from table HOP of opal object o
-#' .datashield.assign(o, symbol="D", value="demo.HOP", variables="name().matches('LAB_')")
-#' }
 #' @keywords internal
 .datashield.assign <- function(opal, symbol, value, variables=NULL, missings=FALSE, identifiers=NULL, id.name=NULL, tibble=FALSE, async=TRUE) {
   if(is.language(value) || is.function(value)) {
