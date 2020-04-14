@@ -43,13 +43,4 @@ The R command ID if the async flag is TRUE and if the wait flag is FALSE and if 
 Assign a Opal value to a R symbol in the current Datashield session.
 This operation is asynchronous and non blocking.
 }
-\examples{
-\dontrun{
-# assign a list of variables from table HOP of opal object o
-.datashield.assign(o, symbol="D", value="demo.HOP", variables=list("GENDER","LAB_GLUC"))
-
-# assign all the variables matching 'LAB' from table HOP of opal object o
-.datashield.assign(o, symbol="D", value="demo.HOP", variables="name().matches('LAB_')")
-}
-}
 \keyword{internal}
