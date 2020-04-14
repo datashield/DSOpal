@@ -7,7 +7,14 @@ Authors@R:
              family = "Marcon",
              role = c("aut", "cre"),
              email = "yannick.marcon@obiba.org",
-             comment = c(ORCID = "0000-0003-0138-2023")))
+             comment = c(ORCID = "0000-0003-0138-2023")),
+      person(given = "Becca",
+             family = "Wilson",
+             role = "ctb",
+             comment = c(ORCID = "0000-0003-2294-593X")),
+      person("OBiBa group",
+             role="cph",
+             email="info@obiba.org"))
 Depends:
     R (>= 3.5),
     opalr (>= 1.4), 
