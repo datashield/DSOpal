@@ -22,10 +22,4 @@ The R command ID if the async flag is TRUE and if the wait flag is FALSE and if 
 Assign a Opal value to a R symbol in the current Datashield session.
 This operation is asynchronous and non blocking.
 }
-\examples{
-\dontrun{
-# assign a resource
-.datashield.assign.resource(o, symbol="D", value="demo.HOPr")
-}
-}
 \keyword{internal}

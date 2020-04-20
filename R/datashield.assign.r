@@ -77,12 +77,6 @@
 #' @param async Whether the call should be asynchronous.
 #' 
 #' @return The R command ID if the async flag is TRUE and if the wait flag is FALSE and if Opal version is at least 2.1, NULL otherwise.
-#'
-#' @examples 
-#' \dontrun{
-#' # assign a resource
-#' .datashield.assign.resource(o, symbol="D", value="demo.HOPr")
-#' }
 #' @keywords internal
 .datashield.assign.resource <- function(opal, symbol, value, async=TRUE) {
   ignore <- .getDatashieldSessionId(opal)
