@@ -25,4 +25,5 @@ dsAssignTable(con, "D", "test.CNSIM")
 dsAggregate(con, as.symbol("meanDS(D$WEIGHT)"))
 dsDisconnect(con)
 }
+
 }

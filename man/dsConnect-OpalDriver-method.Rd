@@ -41,3 +41,11 @@ A \code{\link{OpalConnection-class}} object.
 \description{
 Connect to a Opal server, with provided credentials. Does not create a DataSHIELD R session, only retrieves user profile.
 }
+\examples{
+\dontrun{
+con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+con
+dsDisconnect(con)
+}
+
+}

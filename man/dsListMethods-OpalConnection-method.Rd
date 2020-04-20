@@ -12,8 +12,17 @@
 \item{type}{Type of the method: "aggregate" (default) or "assign".}
 }
 \value{
-A data frame.
+A data frame with columns: name, type ('aggregate' or 'assign'), class ('function' or 'script'), value, package, version.
 }
 \description{
 List methods defined in the DataSHIELD configuration.
+}
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsListMethods(con)
+dsDisconnect(con)
+}
+
 }

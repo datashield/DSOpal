@@ -22,3 +22,12 @@ A \code{\link{OpalResult-class}} object.
 \description{
 Assign a result of the execution of an expression in the DataSHIELD R session.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+dsDisconnect(con)
+}
+
+}

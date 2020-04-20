@@ -15,3 +15,11 @@
 Disconnect from a Opal server and release all R resources. If a workspace ID is provided, the DataSHIELD
 R session will be saved before being destroyed.
 }
+\examples{
+\dontrun{
+con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+con
+dsDisconnect(con)
+}
+
+}

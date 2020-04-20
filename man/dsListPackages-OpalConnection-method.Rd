@@ -10,8 +10,17 @@
 \item{conn}{\code{\link{OpalConnection-class}} class object}
 }
 \value{
-A data frame.
+A data frame with columns: name, version.
 }
 \description{
 List packages defined in the DataSHIELD configuration.
+}
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsListPackages(con)
+dsDisconnect(con)
+}
+
 }

@@ -15,3 +15,12 @@ The fully qualified names of the tables.
 \description{
 List Opal tables that may be accessible for performing DataSHIELD operations.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsListTables(con)
+dsDisconnect(con)
+}
+
+}
