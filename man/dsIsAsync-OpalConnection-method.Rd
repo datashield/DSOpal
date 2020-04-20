@@ -15,3 +15,12 @@ The named list of logicals detailing the asynchronicity support.
 \description{
 List that Opal supports asynchronicity on all DataSHIELD operations.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsIsAsync(con)
+dsDisconnect(con)
+}
+
+}

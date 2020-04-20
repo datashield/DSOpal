@@ -22,6 +22,16 @@ setClass("OpalResult", contains = "DSResult", slots = list(
 #' 
 #' @return The result information, including its status.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+#' res <- dsAggregate(con, as.symbol("length(C)"))
+#' dsGetInfo(res)
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
@@ -40,6 +50,16 @@ setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
 #' @param res \code{\link{OpalResult-class}} object.
 #' 
 #' @return TRUE if table exists.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+#' res <- dsAggregate(con, as.symbol("length(C)"))
+#' length <- dsFetch(res)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods

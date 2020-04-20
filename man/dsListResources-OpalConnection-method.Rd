@@ -15,3 +15,12 @@ The fully qualified names of the resources.
 \description{
 List Opal resources that may be accessible for performing DataSHIELD operations.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsListResources(con)
+dsDisconnect(con)
+}
+
+}

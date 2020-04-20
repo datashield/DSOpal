@@ -15,3 +15,14 @@ TRUE if table exists.
 \description{
 Fetch the DataSHIELD operation result.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+res <- dsAggregate(con, as.symbol("length(C)"))
+length <- dsFetch(res)
+dsDisconnect(con)
+}
+
+}

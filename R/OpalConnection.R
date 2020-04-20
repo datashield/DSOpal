@@ -27,6 +27,13 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' 
 #' @return A \code{\link{OpalConnection-class}} object.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' con
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import opalr
 #' @import methods
 #' @export
@@ -45,6 +52,13 @@ setMethod("dsConnect", "OpalDriver",
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param save Save the DataSHIELD R session with provided ID (must be a character string).
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' con
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -70,6 +84,14 @@ setMethod("dsDisconnect", "OpalConnection", function(conn, save = NULL) {
 #' 
 #' @return The fully qualified names of the tables.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListTables(con)
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import opalr
 #' @import methods
 #' @export
@@ -94,6 +116,14 @@ setMethod("dsListTables", "OpalConnection", function(conn) {
 #' @param table The fully qualified name of the table.
 #' 
 #' @return TRUE if table exists.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsHasTable(con, "test.CNSIM")
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -124,6 +154,14 @@ setMethod("dsHasTable", "OpalConnection", function(conn, table) {
 #' 
 #' @return The fully qualified names of the resources.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListResources(con)
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import opalr
 #' @import methods
 #' @export
@@ -146,6 +184,14 @@ setMethod("dsListResources", "OpalConnection", function(conn) {
 #' @param resource The fully qualified name of the resource.
 #' 
 #' @return TRUE if the resource exists.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsHasResource(con, "test.CNSIM")
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -176,6 +222,14 @@ setMethod("dsHasResource", "OpalConnection", function(conn, resource) {
 #' 
 #' @return The named list of logicals detailing the asynchronicity support.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsIsAsync(con)
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsIsAsync", "OpalConnection", function(conn) {
@@ -189,6 +243,15 @@ setMethod("dsIsAsync", "OpalConnection", function(conn) {
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' 
 #' @return A character vector.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignTable(con, "D", "test.CNSIM")
+#' dsListSymbols(con)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -205,6 +268,15 @@ setMethod("dsListSymbols", "OpalConnection", function(conn) {
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param symbol Name of the R symbol.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignTable(con, "D", "test.CNSIM")
+#' dsRmSymbol(con, "D")
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
@@ -219,7 +291,15 @@ setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param type Type of the method: "aggregate" (default) or "assign".
 #' 
-#' @return A data frame.
+#' @return A data frame with columns: name, type ('aggregate' or 'assign'), class ('function' or 'script'), value, package, version.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListMethods(con)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -235,7 +315,15 @@ setMethod("dsListMethods", "OpalConnection", function(conn, type = "aggregate") 
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' 
-#' @return A data frame.
+#' @return A data frame with columns: name, version.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListPackages(con)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -252,7 +340,15 @@ setMethod("dsListPackages", "OpalConnection", function(conn) {
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' 
-#' @return A data frame.
+#' @return A data frame with columns: name, lastAccessDate, size.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListWorkspaces(con)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -269,6 +365,15 @@ setMethod("dsListWorkspaces", "OpalConnection", function(conn) {
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param name Name of the workspace.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsSaveWorkspace(con, "foo")
+#' dsListWorkspaces(con)
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import opalr
 #' @import methods
 #' @export
@@ -283,6 +388,17 @@ setMethod("dsSaveWorkspace", "OpalConnection", function(conn, name) {
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param name Name of the workspace.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsSaveWorkspace(con, "foo")
+#' dsListWorkspaces(con)
+#' dsRmWorkspace(con, "foo")
+#' dsListWorkspaces(con)
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import opalr
 #' @import methods
@@ -309,6 +425,14 @@ setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignTable(con, "D", "test.CNSIM")
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, variables=NULL, missings=FALSE, identifiers=NULL, id.name=NULL, async=TRUE) {
@@ -333,6 +457,14 @@ setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, varia
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignResource(con, "D", "test.CNSIM")
+#' dsDisconnect(con)
+#' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsAssignResource", "OpalConnection", function(conn, symbol, resource, async=TRUE) {
@@ -356,6 +488,14 @@ setMethod("dsAssignResource", "OpalConnection", function(conn, symbol, resource,
 #'   the connections, when the connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+#' dsDisconnect(con)
+#' }
 #' 
 #' @import methods
 #' @export
@@ -386,6 +526,7 @@ setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr, async=T
 #' dsAggregate(con, as.symbol("meanDS(D$WEIGHT)"))
 #' dsDisconnect(con)
 #' }
+#' 
 #' @import methods
 #' @export
 setMethod("dsAggregate", "OpalConnection", function(conn, expr, async=TRUE) {

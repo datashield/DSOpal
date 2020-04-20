@@ -14,3 +14,13 @@
 \description{
 Remoe a symbol living in the DataSHIELD R session.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsAssignTable(con, "D", "test.CNSIM")
+dsRmSymbol(con, "D")
+dsDisconnect(con)
+}
+
+}

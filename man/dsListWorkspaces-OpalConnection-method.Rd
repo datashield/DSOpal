@@ -10,8 +10,17 @@
 \item{conn}{\code{\link{OpalConnection-class}} class object}
 }
 \value{
-A data frame.
+A data frame with columns: name, lastAccessDate, size.
 }
 \description{
 List workspaces saved in the data repository.
+}
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsListWorkspaces(con)
+dsDisconnect(con)
+}
+
 }

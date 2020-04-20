@@ -17,3 +17,12 @@ TRUE if the resource exists.
 \description{
 Verify Opal resource exist and can be accessible for performing DataSHIELD operations.
 }
+\examples{
+\dontrun{
+con <- dbConnect(DSOpal::Opal(), "server1",
+  "username", "password", "https://opal.example.org")
+dsHasResource(con, "test.CNSIM")
+dsDisconnect(con)
+}
+
+}
