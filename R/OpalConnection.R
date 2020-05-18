@@ -105,7 +105,11 @@ setMethod("dsListTables", "OpalConnection", function(conn) {
       }
     }
   }
-  tables
+  if (length(tables)) {
+    tables 
+  } else {
+    vector(mode="character", length = 0)
+  }
 })
 
 #' Verify Opal table 
@@ -173,7 +177,11 @@ setMethod("dsListResources", "OpalConnection", function(conn) {
       resources <- append(resources, paste0(proj$name, ".", res$name))
     }
   }
-  resources
+  if (length(resources)) {
+    resources 
+  } else {
+    vector(mode="character", length = 0)
+  }
 })
 
 #' Verify Opal resource 
