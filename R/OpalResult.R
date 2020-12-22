@@ -43,6 +43,38 @@ setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
   }
 })
 
+#' Get whether the operation is completed
+#' 
+#' Get the information about a command (if still available) and return TRUE if
+#' the command was completed successfully or not. Always TRUE for synchronous
+#' operations.
+#' 
+#' @param res \code{\link{OpalResult-class}} object.
+#' 
+#' @return A logical indicating the command completion.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
+#' res <- dsAggregate(con, as.symbol("length(C)"))
+#' dsIsCompleted(res)
+#' dsDisconnect(con)
+#' }
+#' 
+#' @import methods
+#' @export
+setMethod("dsIsCompleted", "OpalResult", function(res) {
+  if (is.null(res@rval$rid)) {
+    TRUE
+  } else {
+    o <- res@conn@opal
+    cmd <- .datashield.command(o, res@rval$rid, wait=FALSE)
+    cmd$status == "COMPLETED" || cmd$status == "FAILED"
+  }
+})
+
 #' Fetch the result
 #' 
 #' Fetch the DataSHIELD operation result.

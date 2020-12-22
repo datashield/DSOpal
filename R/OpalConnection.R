@@ -45,6 +45,28 @@ setMethod("dsConnect", "OpalDriver",
             con
           })
 
+
+#' Keep connection with a Opal server alive
+#' 
+#' Makes a dummy web service request.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' dsKeepAlive(con)
+#' dsDisconnect(con)
+#' }
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsKeepAlive", "OpalConnection", function(conn) {
+  o <- conn@opal
+  tryCatch(.getDatashieldSession(o), error = function(e) {})
+})
+
 #' Disconnect from a Opal server
 #' 
 #' Disconnect from a Opal server and release all R resources. If a workspace ID is provided, the DataSHIELD
@@ -445,7 +467,7 @@ setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
 #' @export
 setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, variables=NULL, missings=FALSE, identifiers=NULL, id.name=NULL, async=TRUE) {
   o <- conn@opal
-  rval <- .datashield.assign(o, symbol, value=table, variables, missings, identifiers, id.name, async=async)
+  rval <- .datashield.assign.table(o, symbol, value=table, variables, missings, identifiers, id.name, async=async)
   if (async) {
     new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
   } else {
@@ -509,7 +531,7 @@ setMethod("dsAssignResource", "OpalConnection", function(conn, symbol, resource,
 #' @export
 setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr, async=TRUE) {
   o <- conn@opal
-  rval <- .datashield.assign(o, symbol, value=expr, async=async)
+  rval <- .datashield.assign.expr(o, symbol, value=expr, async=async)
   if (async) {
     new("OpalResult", conn = conn, rval = list(rid = rval, result = NULL)) 
   } else {
