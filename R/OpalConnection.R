@@ -63,8 +63,7 @@ setMethod("dsConnect", "OpalDriver",
 #' @import methods
 #' @export
 setMethod("dsKeepAlive", "OpalConnection", function(conn) {
-  o <- conn@opal
-  tryCatch(.getDatashieldSession(o), error = function(e) {})
+  tryCatch(dsListSymbols(conn), error = function(e) {})
 })
 
 #' Disconnect from a Opal server

@@ -11,13 +11,6 @@
   return(opal$rid)
 }
 
-#' Get R session from opal object, create a new Datashield R session if not found.
-#' @keywords internal
-.getDatashieldSession <- function(opal) {
-  rid <- .getDatashieldSessionId(opal)
-  return(opalr::opal.get(opal, "datashield", "session", rid))
-}
-
 #' Create a new Datashield R session in Opal.
 #' @keywords internal
 .newDatashieldSession <- function(opal, restore=NULL) {
