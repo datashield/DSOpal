@@ -22,5 +22,5 @@
   
   query <- list(async=ifelse(async, "true", "false"))
   ignore <- .getDatashieldSessionId(opal)
-  opalr::opal.post(opal, "datashield", "session", opal$rid, "aggregate", query=query, body=expression, contentType="application/x-rscript")
+  opalr::opal.post(opal, "datashield", "session", opal$rid, "aggregate", query=query, body=expression, contentType="application/x-rscript", acceptType = "application/octet-stream")
 }

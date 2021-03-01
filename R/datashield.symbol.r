@@ -7,7 +7,7 @@
 #' @keywords internal
 .datashield.symbols <- function(opal) {
   ignore <- .getDatashieldSessionId(opal)
-  opalr::opal.get(opal, "datashield", "session", opal$rid, "symbols")
+  opalr::opal.get(opal, "datashield", "session", opal$rid, "symbols", acceptType = "application/octet-stream")
 }
 
 #' Remove a R symbol

@@ -78,5 +78,5 @@
       stop("Command '", cmd$script, "' failed on '", opal$name,"': ", msg, call.=FALSE)
     }
   }
-  opalr::opal.get(opal, "datashield", "session", .getDatashieldSessionId(opal), "command", id, "result")
+  opalr::opal.get(opal, "datashield", "session", .getDatashieldSessionId(opal), "command", id, "result", acceptType = "application/octet-stream")
 }
