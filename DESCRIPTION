@@ -17,7 +17,7 @@ Authors@R:
              email="info@obiba.org"))
 Depends:
     R (>= 3.5),
-    opalr (>= 1.4), 
+    opalr (>= 2.0),
     DSI (>= 1.2),
     methods
 Description: 'DataSHIELD' is an infrastructure and series of R packages that 
