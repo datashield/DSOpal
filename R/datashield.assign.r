@@ -23,6 +23,7 @@
   }
   query <- list()
   query["async"] <- ifelse(async, "true", "false")
+  ignore <- .getDatashieldSessionId(opal)
   opalr::opal.put(opal, "datashield", "session", opal$rid, "symbol", symbol, query=query, body=body, contentType=contentType)
 }
 
