@@ -18,6 +18,9 @@
   if (!is.null(restore)) {
     query <- list(restore=restore)  
   }
+  if (!is.null(opal$profile) && !is.na(opal$profile)) {
+    query <- list(profile=opal$profile)  
+  }
   res <- opalr::opal.post(opal, "datashield", "sessions", query=query)
   return(res$id)
 }

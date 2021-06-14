@@ -1,4 +1,14 @@
 
+#' List Datashield profiles
+#' 
+#' Get available Datashield profiles.
+#' 
+#' @param opal Opal object.
+#' @keywords internal
+.datashield.profiles <- function(opal) {
+  sapply(opalr::opal.get(opal, "datashield", "profiles"), function(p) p$name)
+}
+
 #' List Datashield methods
 #' 
 #' Get available Datashield methods of a given type.

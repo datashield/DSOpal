@@ -23,6 +23,7 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' @param token Personal access token (since opal 2.15, ignored if username is specified).
 #' @param url Opal url or list of opal urls. Can be provided by "opal.url" option.
 #' @param opts Curl options as described by httr (call httr::httr_options() for details). Can be provided by "opal.opts" option.
+#' @param profile The DataSHIELD R server profile (affects the R packages available and the applied configuration). If not provided or not supported, default profile will be applied.
 #' @param ... Unused, needed for compatibility with generic.
 #' 
 #' @return A \code{\link{OpalConnection-class}} object.
@@ -38,8 +39,8 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' @import methods
 #' @export
 setMethod("dsConnect", "OpalDriver", 
-          function(drv, name, restore = NULL, username = NULL, password = NULL, token = NULL, url = NULL, opts = list(), ...) {
-            o <- opalr::opal.login(username, password, token, url, opts, restore=restore)
+          function(drv, name, restore = NULL, username = NULL, password = NULL, token = NULL, url = NULL, opts = list(), profile = NULL, ...) {
+            o <- opalr::opal.login(username, password, token, url, opts, profile=profile, restore=restore)
             o$name <- name
             con <- new("OpalConnection", name = name, opal = o)
             con
@@ -311,6 +312,30 @@ setMethod("dsListSymbols", "OpalConnection", function(conn) {
 setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
   o <- conn@opal
   .datashield.rm(o, symbol)
+})
+
+#' List profiles
+#' 
+#' List profiles defined in the DataSHIELD configuration.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' 
+#' @return A character vector of profile names.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListProfiles(con)
+#' dsDisconnect(con)
+#' }
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsListProfiles", "OpalConnection", function(conn) {
+  o <- conn@opal
+  .datashield.profiles(o)
 })
 
 #' List methods

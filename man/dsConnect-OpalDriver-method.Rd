@@ -13,6 +13,7 @@
   token = NULL,
   url = NULL,
   opts = list(),
+  profile = NULL,
   ...
 )
 }
@@ -32,6 +33,8 @@
 \item{url}{Opal url or list of opal urls. Can be provided by "opal.url" option.}
 
 \item{opts}{Curl options as described by httr (call httr::httr_options() for details). Can be provided by "opal.opts" option.}
+
+\item{profile}{The DataSHIELD R server profile (affects the R packages available and the applied configuration). If not provided or not supported, default profile will be applied.}
 
 \item{...}{Unused, needed for compatibility with generic.}
 }
