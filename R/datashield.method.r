@@ -6,7 +6,11 @@
 #' @param opal Opal object.
 #' @keywords internal
 .datashield.profiles <- function(opal) {
-  sapply(opalr::opal.get(opal, "datashield", "profiles"), function(p) p$name)
+  if (opal.version_compare(opal, "4.2")<0)
+    list(available = "default", current = "default")
+  else
+    list(available = sapply(opalr::opal.get(opal, "datashield", "profiles"), function(p) p$name),
+        current = ifelse(nchar(opal$profile) == 0, "default", opal$profile))
 }
 
 #' List Datashield methods
