@@ -10,7 +10,7 @@
 \item{conn}{\code{\link{OpalConnection-class}} class object}
 }
 \value{
-A character vector of profile names.
+A list containing the "available" character vector of profile names and the "current" profile (in case a default one was assigned).
 }
 \description{
 List profiles defined in the DataSHIELD configuration.

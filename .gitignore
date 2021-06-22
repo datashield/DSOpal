@@ -4,8 +4,8 @@
 *.dll
 *.Rproj
 .Rproj.user
-*.html
 figure
 .RData
 inst/doc
 vignettes/*.R
+vignettes/*.html

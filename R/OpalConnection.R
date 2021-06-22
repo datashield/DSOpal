@@ -320,7 +320,7 @@ setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' 
-#' @return A character vector of profile names.
+#' @return A list containing the "available" character vector of profile names and the "current" profile (in case a default one was assigned).
 #' 
 #' @examples
 #' \dontrun{
