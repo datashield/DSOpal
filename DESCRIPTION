@@ -29,9 +29,13 @@ Description: 'DataSHIELD' is an infrastructure and series of R packages that
     It can import, process, validate, query, analyze, report, and export data.
     'Opal' is the reference implementation of the 'DataSHIELD' infrastructure.
 License: LGPL (>= 2.1)
-URL: https://github.com/datashield/DSOpal/, https://datashield.github.com/DSOpal/,
-    https://www.obiba.org, https://www.obiba.org/pages/products/opal/, 
-    http://www.datashield.org, https://doi.org/10.1093/ije/dyu188
+URL: https://github.com/datashield/DSOpal/,
+    https://datashield.github.io/DSOpal/,
+    https://www.obiba.org,
+    https://www.obiba.org/pages/products/opal/,
+    https://www.datashield.org,
+    https://academic.oup.com/ije/article/43/6/1929/707730,
+    https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008880
 BugReports: https://github.com/datashield/DSOpal/issues/
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)

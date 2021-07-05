@@ -19,11 +19,12 @@
 Useful links:
 \itemize{
   \item \url{https://github.com/datashield/DSOpal/}
-  \item \url{https://datashield.github.com/DSOpal/}
+  \item \url{https://datashield.github.io/DSOpal/}
   \item \url{https://www.obiba.org}
   \item \url{https://www.obiba.org/pages/products/opal/}
-  \item \url{http://www.datashield.org}
-  \item \url{https://doi.org/10.1093/ije/dyu188}
+  \item \url{https://www.datashield.org}
+  \item \url{https://academic.oup.com/ije/article/43/6/1929/707730}
+  \item \url{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008880}
   \item Report bugs at \url{https://github.com/datashield/DSOpal/issues/}
 }
 
