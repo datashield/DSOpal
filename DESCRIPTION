@@ -31,7 +31,7 @@ Description: 'DataSHIELD' is an infrastructure and series of R packages that
 License: LGPL (>= 2.1)
 URL: https://www.obiba.org https://www.obiba.org/pages/products/opal/ http://www.datashield.ac.uk https://doi.org/10.1093/ije/dyu188
 BugReports: https://github.com/datashield/DSOpal
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Collate: 
