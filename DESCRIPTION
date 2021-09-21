@@ -1,7 +1,7 @@
 Package: DSOpal
 Type: Package
 Title: 'DataSHIELD' Implementation for 'Opal'
-Version: 1.1.1
+Version: 1.1.2
 Authors@R:
     c(person(given = "Yannick",
              family = "Marcon",
