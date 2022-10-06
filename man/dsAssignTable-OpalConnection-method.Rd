@@ -22,7 +22,7 @@
 
 \item{table}{Fully qualified name of a table in Opal.}
 
-\item{variables}{List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods}
+\item{variables}{List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: https://opaldoc.obiba.org/en/latest/magma-user-guide/methods.html}
 
 \item{missings}{If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.}
 

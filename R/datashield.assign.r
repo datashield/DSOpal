@@ -35,7 +35,7 @@
 #' @param opal Opal object.
 #' @param symbol Name of the R symbol.
 #' @param value Fully qualified name of a variable or a table in Opal.
-#' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: http://wiki.obiba.org/display/OPALDOC/Variable+Methods
+#' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: https://opaldoc.obiba.org/en/latest/magma-user-guide/methods.html
 #' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
 #' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
 #' @param id.name Name of the column that will contain the entity identifiers. If not specified, the identifiers
