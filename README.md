@@ -1,6 +1,6 @@
 # DataSHIELD Opal
 
-[![Build Status](https://travis-ci.org/datashield/DSOpal.svg?branch=master)](https://travis-ci.org/datashield/DSOpal)
+[![Build Status](https://app.travis-ci.com/datashield/DSOpal.svg?branch=master)](https://app.travis-ci.com/github/datashield/DSOpal)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DSOpal)](https://cran.r-project.org/package=DSOpal)
 
 [DataSHIELD Interface (DSI)](https://datashield.github.io/DSI/) implementation for 
