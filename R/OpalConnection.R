@@ -436,6 +436,30 @@ setMethod("dsSaveWorkspace", "OpalConnection", function(conn, name) {
   .datashield.workspace_save(o, name)
 })
 
+#' Restore workspace
+#' 
+#' Restore workspace from the data repository.
+#' 
+#' @param conn \code{\link{OpalConnection-class}} class object
+#' @param name Name of the workspace.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dbConnect(DSOpal::Opal(), "server1",
+#'   "username", "password", "https://opal.example.org")
+#' dsListWorkspaces(con)
+#' dsRestoreWorkspace(con, "foo")
+#' dsDisconnect(con)
+#' }
+#' 
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsRestoreWorkspace", "OpalConnection", function(conn, name) {
+  o <- conn@opal
+  .datashield.workspace_restore(o, name)
+})
+
 #' Remove a workspace
 #' 
 #' Remove a workspace on the data repository.

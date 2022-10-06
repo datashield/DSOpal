@@ -6,14 +6,7 @@
 \alias{DSOpal-package}
 \title{DSOpal: 'DataSHIELD' Implementation for 'Opal'}
 \description{
-'DataSHIELD' is an infrastructure and series of R packages that 
-    enables the remote and 'non-disclosive' analysis of sensitive research data.
-    This package is the 'DataSHIELD' interface implementation for 'Opal', which is
-    the data integration application for biobanks by 'OBiBa'. Participant data, once
-    collected from any data source, must be integrated and stored in a central
-    data repository under a uniform model. 'Opal' is such a central repository.
-    It can import, process, validate, query, analyze, report, and export data.
-    'Opal' is the reference implementation of the 'DataSHIELD' infrastructure.
+'DataSHIELD' is an infrastructure and series of R packages that enables the remote and 'non-disclosive' analysis of sensitive research data. This package is the 'DataSHIELD' interface implementation for 'Opal', which is the data integration application for biobanks by 'OBiBa'. Participant data, once collected from any data source, must be integrated and stored in a central data repository under a uniform model. 'Opal' is such a central repository. It can import, process, validate, query, analyze, report, and export data. 'Opal' is the reference implementation of the 'DataSHIELD' infrastructure.
 }
 \seealso{
 Useful links:

@@ -80,3 +80,23 @@
     ignore <- opalr::opal.post(opal, "datashield", "session", opal$rid, "workspaces", query=query) 
   }
 }
+
+#' Restore a saved workspace in the current DataSHIELD session.
+#' 
+#' @param opal Opal object.
+#' @param ws The workspace name
+#' @keywords internal
+.datashield.workspace_restore <- function(opal, ws) {
+  u <- opal$username
+  if (is.null(u) || length(u) == 0) {
+    stop("User name is missing or empty.")
+  }
+  if (length(ws) == 0) {
+    stop("Workspace name is missing or empty.")
+  }
+  if (opalr::opal.version_compare(opal,"4.5")<0) {
+    warning(opal$name, ": Workspaces are not available for opal ", opal$version, " (4.5.0 or higher is required)")
+  } else {
+    ignore <- opalr::opal.put(opal, "datashield", "session", opal$rid, "workspace", ws) 
+  }
+}
