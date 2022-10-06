@@ -5,7 +5,7 @@
 
 [DataSHIELD Interface (DSI)](https://datashield.github.io/DSI/) implementation for 
 [Opal](https://www.obiba.org/pages/products/opal/) data warehouse, based on 
-[Opal R Client (opalr)](http://www.obiba.org/opalr/) package.
+[Opal R Client (opalr)](https://www.obiba.org/opalr/) package.
 
 This is the reference implementation of the DataSHIELD Interface that can be used for implementing other data 
 repository clients supporting DataSHIELD infrastructure.
