@@ -5,6 +5,6 @@
 \alias{OpalConnection-class}
 \title{Class OpalConnection.}
 \description{
-An Opal connection implementing the DataSHIELD Interface (DSI) \code{\link{DSConnection-class}}.
+An Opal connection implementing the DataSHIELD Interface (DSI) \code{\link[DSI]{DSConnection-class}}.
 }
 \keyword{internal}

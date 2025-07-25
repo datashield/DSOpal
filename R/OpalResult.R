@@ -3,7 +3,7 @@ NULL
 
 #' Class OpalResult.
 #'
-#' An Opal result implementing the DataSHIELD Interface (DSI)  \code{\link{DSResult-class}}.
+#' An Opal result implementing the DataSHIELD Interface (DSI)  \code{\link[DSI]{DSResult-class}}.
 #' 
 #' @import methods
 #' @import DSI
