@@ -1,174 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/DSOpal-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/Opal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/OpalConnection-class.html</loc>
-  </url>
-  <url>
-    <loc>/reference/OpalDriver-class.html</loc>
-  </url>
-  <url>
-    <loc>/reference/OpalResult-class.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.aggregate.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.assign.expr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.assign.resource.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.assign.table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.command.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.command_result.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.command_rm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.commands.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.commands_rm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.methods.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.profiles.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.rm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.symbols.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.workspace_restore.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.workspace_rm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.workspace_save.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-datashield.workspaces.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-deparse.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-getDatashieldSessionId.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-getPEMFilePath.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-newDatashieldSession.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dot-rmDatashieldSession.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsAggregate-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsAssignExpr-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsAssignResource-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsAssignTable-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsConnect-OpalDriver-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsDisconnect-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsFetch-OpalResult-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsGetInfo-OpalResult-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsHasResource-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsHasTable-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsIsAsync-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsIsCompleted-OpalResult-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsKeepAlive-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListMethods-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListPackages-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListProfiles-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListResources-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListSymbols-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListTables-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsListWorkspaces-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsRestoreWorkspace-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsRmSymbol-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsRmWorkspace-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dsSaveWorkspace-OpalConnection-method.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/logindata.opal.demo.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/DSOpal-package.html</loc></url>
+<url><loc>/reference/Opal.html</loc></url>
+<url><loc>/reference/OpalConnection-class.html</loc></url>
+<url><loc>/reference/OpalDriver-class.html</loc></url>
+<url><loc>/reference/OpalResult-class.html</loc></url>
+<url><loc>/reference/dot-datashield.aggregate.html</loc></url>
+<url><loc>/reference/dot-datashield.assign.expr.html</loc></url>
+<url><loc>/reference/dot-datashield.assign.resource.html</loc></url>
+<url><loc>/reference/dot-datashield.assign.table.html</loc></url>
+<url><loc>/reference/dot-datashield.command.html</loc></url>
+<url><loc>/reference/dot-datashield.command_result.html</loc></url>
+<url><loc>/reference/dot-datashield.command_rm.html</loc></url>
+<url><loc>/reference/dot-datashield.commands.html</loc></url>
+<url><loc>/reference/dot-datashield.commands_rm.html</loc></url>
+<url><loc>/reference/dot-datashield.methods.html</loc></url>
+<url><loc>/reference/dot-datashield.profiles.html</loc></url>
+<url><loc>/reference/dot-datashield.rm.html</loc></url>
+<url><loc>/reference/dot-datashield.symbols.html</loc></url>
+<url><loc>/reference/dot-datashield.workspace_restore.html</loc></url>
+<url><loc>/reference/dot-datashield.workspace_rm.html</loc></url>
+<url><loc>/reference/dot-datashield.workspace_save.html</loc></url>
+<url><loc>/reference/dot-datashield.workspaces.html</loc></url>
+<url><loc>/reference/dot-deparse.html</loc></url>
+<url><loc>/reference/dot-getDatashieldSessionId.html</loc></url>
+<url><loc>/reference/dot-getPEMFilePath.html</loc></url>
+<url><loc>/reference/dot-newDatashieldSession.html</loc></url>
+<url><loc>/reference/dot-rmDatashieldSession.html</loc></url>
+<url><loc>/reference/dsAggregate-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsAssignExpr-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsAssignResource-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsAssignTable-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsConnect-OpalDriver-method.html</loc></url>
+<url><loc>/reference/dsDisconnect-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsFetch-OpalResult-method.html</loc></url>
+<url><loc>/reference/dsGetInfo-OpalResult-method.html</loc></url>
+<url><loc>/reference/dsHasResource-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsHasTable-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsIsAsync-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsIsCompleted-OpalResult-method.html</loc></url>
+<url><loc>/reference/dsKeepAlive-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListMethods-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListPackages-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListProfiles-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListResources-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListSymbols-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListTables-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsListWorkspaces-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsRestoreWorkspace-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsRmSymbol-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsRmWorkspace-OpalConnection-method.html</loc></url>
+<url><loc>/reference/dsSaveWorkspace-OpalConnection-method.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/logindata.opal.demo.html</loc></url>
 </urlset>
+
