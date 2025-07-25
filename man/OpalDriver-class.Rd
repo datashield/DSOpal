@@ -5,7 +5,7 @@
 \alias{OpalDriver-class}
 \title{Class OpalDriver with constructor Opal.}
 \description{
-An Opal driver implementing the DataSHIELD Interface (DSI) \code{\link{DSDriver-class}}.
+An Opal driver implementing the DataSHIELD Interface (DSI) \code{\link[DSI]{DSDriver-class}}.
 This class should always be initialized with the \code{\link{Opal}} function.
 It returns a singleton that allows you to connect to Opal.
 }
