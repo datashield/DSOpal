@@ -1,7 +1,7 @@
 # DataSHIELD Opal
 
-[![Build Status](https://app.travis-ci.com/datashield/DSOpal.svg?branch=master)](https://app.travis-ci.com/github/datashield/DSOpal)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DSOpal)](https://cran.r-project.org/package=DSOpal)
+[![R-CMD-check](https://github.com/datashield/DSOpal/actions/workflows/ci.yml/badge.svg)](https://github.com/datashield/DSOpal/actions/workflows/ci.yml)
 
 [DataSHIELD Interface (DSI)](https://datashield.github.io/DSI/) implementation for 
 [Opal](https://www.obiba.org/pages/products/opal/) data warehouse, based on 
