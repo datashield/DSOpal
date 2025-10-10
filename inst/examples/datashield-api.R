@@ -11,6 +11,15 @@ dsHasResource(o, "test.CNSIM1")
 dsHasResource(o, "test.CNSIM1xx")
 
 dsIsAsync(o)
+
+dsHasSession(o)
+session <- dsSession(o, async = TRUE)
+dsIsReady(session)
+while (!dsIsReady(session)) {
+  Sys.sleep(1)
+  cat(dsStateMessage(session), "\n")
+}
+
 rbind(dsListMethods(o, type = "aggregate"), dsListMethods(o, type = "assign"))
 dsListPackages(o)
 

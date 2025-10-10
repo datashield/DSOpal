@@ -17,9 +17,10 @@ Authors@R:
              email="info@obiba.org"))
 Depends:
     R (>= 3.5),
-    opalr (>= 3.0),
-    DSI (>= 1.5),
-    methods
+    opalr (>= 3.5),
+    DSI (>= 1.8),
+    methods,
+    utils
 Description: 'DataSHIELD' is an infrastructure and series of R packages that 
     enables the remote and 'non-disclosive' analysis of sensitive research data.
     This package is the 'DataSHIELD' interface implementation for 'Opal', which is
@@ -45,6 +46,7 @@ Collate:
     'OpalDriver.R'
     'OpalConnection.R'
     'OpalResult.R'
+    'OpalSession.R'
     'datashield.aggregate.r'
     'datashield.assign.r'
     'datashield.command.r'

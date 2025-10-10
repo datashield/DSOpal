@@ -251,6 +251,56 @@ setMethod("dsHasResource", "OpalConnection", function(conn, resource) {
   }
 })
 
+#' Check remote R session exists
+#'
+#' Check if a remote R session exists (not necessarily running and ready to accept 
+#' R commands submissions).
+#'
+#' @param conn An object that inherits from \code{\link{OpalConnection-class}}.
+#' @return A logical indicating if a remote R session exists accessible through this connection.
+#'
+#' @examples
+#' \dontrun{
+#' con <- dsConnect(DSOpal::Opal(), "server1",
+#'   username = "administrator", password = "password", url = "https://opal-demo.obiba.org")
+#' dsHasSession(con)
+#' dsDisconnect(con)
+#' }
+#' @import opalr
+#' @import methods
+#' @export
+setMethod("dsHasSession", "OpalConnection", function(conn) {
+  o <- conn@opal
+  !is.null(o$rid)
+})
+
+#' Create a remote R session
+#' 
+#' Create a remote R session if none exists. If a remote R session already exists,
+#' it will be reused. Returns a logical indicating if a remote R session exists
+#' accessible through this connection.
+#' 
+#' @param conn An object that inherits from \code{\link{OpalConnection-class}}.
+#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) 
+#' the calls are parallelized over the connections, when the connection supports 
+#' that feature, with an extra overhead of requests.
+#' @return An object of class \code{\link{OpalSession-class}} representing the remote R session.
+#' 
+#' @examples
+#' \dontrun{
+#' con <- dsConnect(DSOpal::Opal(), "server1",
+#'   username = "dsuser", password = "password", url = "https://opal-demo.obiba.org")
+#' session <- dsSession(con, async=TRUE)
+#' dsDisconnect(con)
+#' }
+#' @import opalr
+#' @export
+setMethod("dsSession", "OpalConnection", function(conn, async=TRUE) {
+  o <- conn@opal
+  opalr::opal.session(o, wait = !async)
+  new("OpalSession", conn = conn)
+})
+
 #' Opal asynchronous support 
 #' 
 #' List that Opal supports asynchronicity on all DataSHIELD operations.
@@ -270,7 +320,8 @@ setMethod("dsHasResource", "OpalConnection", function(conn, resource) {
 #' @import methods
 #' @export
 setMethod("dsIsAsync", "OpalConnection", function(conn) {
-  list(aggregate = TRUE, assignTable = TRUE, assignResource = TRUE, assignExpr = TRUE)
+  
+  list(session = TRUE, aggregate = TRUE, assignTable = TRUE, assignResource = TRUE, assignExpr = TRUE)
 })
 
 #' List R symbols
