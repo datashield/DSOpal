@@ -18,7 +18,7 @@ List symbols living in the DataSHIELD R session.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsAssignTable(con, "D", "test.CNSIM")
 dsListSymbols(con)
 dsDisconnect(con)

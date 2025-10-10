@@ -25,7 +25,7 @@ setClass("OpalResult", contains = "DSResult", slots = list(
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
 #' res <- dsAggregate(con, as.symbol("length(C)"))
 #' dsGetInfo(res)
@@ -56,7 +56,7 @@ setMethod("dsGetInfo", "OpalResult", function(dsObj, ...) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
 #' res <- dsAggregate(con, as.symbol("length(C)"))
 #' dsIsCompleted(res)
@@ -86,7 +86,7 @@ setMethod("dsIsCompleted", "OpalResult", function(res) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
 #' res <- dsAggregate(con, as.symbol("length(C)"))
 #' length <- dsFetch(res)

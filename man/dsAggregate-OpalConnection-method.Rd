@@ -11,8 +11,9 @@
 
 \item{expr}{Expression to evaluate.}
 
-\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-the connections, when the connection supports that feature, with an extra overhead of requests.}
+\item{async}{Whether the result of the call should be retrieved asynchronously.
+When TRUE (default) the calls are parallelized over the connections, when the
+connection supports that feature, with an extra overhead of requests.}
 }
 \description{
 Aggregate some data from the DataSHIELD R session using a valid R expression. The aggregation expression
@@ -20,7 +21,8 @@ must satisfy the data repository's DataSHIELD configuration.
 }
 \examples{
 \dontrun{
-con <- dbConnect(DSOpal::Opal(), "username", "password", "https://opal.example.org")
+con <- dbConnect(DSOpal::Opal(), 
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsAssignTable(con, "D", "test.CNSIM")
 dsAggregate(con, as.symbol("meanDS(D$WEIGHT)"))
 dsDisconnect(con)

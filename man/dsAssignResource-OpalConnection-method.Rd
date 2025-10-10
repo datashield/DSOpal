@@ -13,8 +13,9 @@
 
 \item{resource}{Fully qualified name of a resource in Opal.}
 
-\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-the connections, when the connection supports that feature, with an extra overhead of requests.}
+\item{async}{Whether the result of the call should be retrieved asynchronously.
+When TRUE (default) the calls are parallelized over the connections, when the
+connection supports that feature, with an extra overhead of requests.}
 }
 \value{
 A \code{\link{OpalResult-class}} object.
@@ -25,7 +26,7 @@ Assign a Opal resource in the DataSHIELD R session.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsAssignResource(con, "D", "test.CNSIM")
 dsDisconnect(con)
 }

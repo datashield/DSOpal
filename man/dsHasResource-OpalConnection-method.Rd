@@ -20,7 +20,7 @@ Verify Opal resource exist and can be accessible for performing DataSHIELD opera
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsHasResource(con, "test.CNSIM")
 dsDisconnect(con)
 }

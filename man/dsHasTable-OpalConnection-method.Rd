@@ -20,7 +20,7 @@ Verify Opal table exist and can be accessible for performing DataSHIELD operatio
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsHasTable(con, "test.CNSIM")
 dsDisconnect(con)
 }

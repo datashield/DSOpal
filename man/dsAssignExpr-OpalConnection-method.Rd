@@ -13,8 +13,9 @@
 
 \item{expr}{A R expression with allowed assign functions calls.}
 
-\item{async}{Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-the connections, when the connection supports that feature, with an extra overhead of requests.}
+\item{async}{Whether the result of the call should be retrieved asynchronously.
+When TRUE (default) the calls are parallelized over the connections, when the
+connection supports that feature, with an extra overhead of requests.}
 }
 \value{
 A \code{\link{OpalResult-class}} object.
@@ -25,7 +26,7 @@ Assign a result of the execution of an expression in the DataSHIELD R session.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
 dsDisconnect(con)
 }

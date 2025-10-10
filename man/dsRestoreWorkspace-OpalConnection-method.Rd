@@ -17,7 +17,7 @@ Restore workspace from the data repository.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsListWorkspaces(con)
 dsRestoreWorkspace(con, "foo")
 dsDisconnect(con)

@@ -10,7 +10,8 @@
 \item{conn}{\code{\link{OpalConnection-class}} class object}
 }
 \value{
-A list containing the "available" character vector of profile names and the "current" profile (in case a default one was assigned).
+A list containing the "available" character vector of profile names
+and the "current" profile (in case a default one was assigned).
 }
 \description{
 List profiles defined in the DataSHIELD configuration.
@@ -18,7 +19,7 @@ List profiles defined in the DataSHIELD configuration.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsListProfiles(con)
 dsDisconnect(con)
 }

@@ -14,7 +14,8 @@ Makes a dummy web service request.
 }
 \examples{
 \dontrun{
-con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+con <- dsConnect(DSOpal::Opal(), "server1",
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsKeepAlive(con)
 dsDisconnect(con)
 }

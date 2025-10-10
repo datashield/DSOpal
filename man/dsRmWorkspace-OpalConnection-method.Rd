@@ -17,7 +17,7 @@ Remove a workspace on the data repository.
 \examples{
 \dontrun{
 con <- dbConnect(DSOpal::Opal(), "server1",
-  "username", "password", "https://opal.example.org")
+  "administrator", "password", "https://opal-demo.obiba.org")
 dsSaveWorkspace(con, "foo")
 dsListWorkspaces(con)
 dsRmWorkspace(con, "foo")

@@ -13,7 +13,8 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 
 #' Connect to a Opal server
 #' 
-#' Connect to a Opal server, with provided credentials. Does not create a DataSHIELD R session, only retrieves user profile.
+#' Connect to a Opal server, with provided credentials. Does not create a 
+#' DataSHIELD R session, only retrieves user profile.
 #' 
 #' @param drv \code{\link{OpalDriver-class}} class object.
 #' @param name Name of the connection, which must be unique among all the DataSHIELD connections.
@@ -22,15 +23,18 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' @param password User password in opal(s).
 #' @param token Personal access token (since opal 2.15, ignored if username is specified).
 #' @param url Opal url or list of opal urls. Can be provided by "opal.url" option.
-#' @param opts Curl options as described by httr (call httr::httr_options() for details). Can be provided by "opal.opts" option.
-#' @param profile The DataSHIELD R server profile (affects the R packages available and the applied configuration). If not provided or not supported, default profile will be applied.
+#' @param opts Curl options as described by httr (call httr::httr_options() for 
+#' details). Can be provided by "opal.opts" option.
+#' @param profile The DataSHIELD R server profile (affects the R packages available 
+#' and the applied configuration). If not provided or not supported, default profile will be applied.
 #' @param ... Unused, needed for compatibility with generic.
 #' 
 #' @return A \code{\link{OpalConnection-class}} object.
 #' 
 #' @examples
 #' \dontrun{
-#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' con <- dsConnect(DSOpal::Opal(), "server1",
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' con
 #' dsDisconnect(con)
 #' }
@@ -55,7 +59,8 @@ setMethod("dsConnect", "OpalDriver",
 #' 
 #' @examples
 #' \dontrun{
-#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' con <- dsConnect(DSOpal::Opal(), "server1",
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsKeepAlive(con)
 #' dsDisconnect(con)
 #' }
@@ -69,7 +74,8 @@ setMethod("dsKeepAlive", "OpalConnection", function(conn) {
 
 #' Disconnect from a Opal server
 #' 
-#' Disconnect from a Opal server and release all R resources. If a workspace ID is provided, the DataSHIELD
+#' Disconnect from a Opal server and release all R resources. If a workspace ID 
+#' is provided, the DataSHIELD
 #' R session will be saved before being destroyed.
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
@@ -77,7 +83,8 @@ setMethod("dsKeepAlive", "OpalConnection", function(conn) {
 #' 
 #' @examples
 #' \dontrun{
-#' con <- dsConnect(DSOpal::Opal(), "server1", "username", "password", "https://opal.example.org")
+#' con <- dsConnect(DSOpal::Opal(), "server1", 
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' con
 #' dsDisconnect(con)
 #' }
@@ -109,7 +116,7 @@ setMethod("dsDisconnect", "OpalConnection", function(conn, save = NULL) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListTables(con)
 #' dsDisconnect(con)
 #' }
@@ -146,7 +153,7 @@ setMethod("dsListTables", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsHasTable(con, "test.CNSIM")
 #' dsDisconnect(con)
 #' }
@@ -183,7 +190,7 @@ setMethod("dsHasTable", "OpalConnection", function(conn, table) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListResources(con)
 #' dsDisconnect(con)
 #' }
@@ -218,7 +225,7 @@ setMethod("dsListResources", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsHasResource(con, "test.CNSIM")
 #' dsDisconnect(con)
 #' }
@@ -255,7 +262,7 @@ setMethod("dsHasResource", "OpalConnection", function(conn, resource) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsIsAsync(con)
 #' dsDisconnect(con)
 #' }
@@ -277,7 +284,7 @@ setMethod("dsIsAsync", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignTable(con, "D", "test.CNSIM")
 #' dsListSymbols(con)
 #' dsDisconnect(con)
@@ -301,7 +308,7 @@ setMethod("dsListSymbols", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignTable(con, "D", "test.CNSIM")
 #' dsRmSymbol(con, "D")
 #' dsDisconnect(con)
@@ -320,12 +327,13 @@ setMethod("dsRmSymbol", "OpalConnection", function(conn, symbol) {
 #' 
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' 
-#' @return A list containing the "available" character vector of profile names and the "current" profile (in case a default one was assigned).
+#' @return A list containing the "available" character vector of profile names 
+#' and the "current" profile (in case a default one was assigned).
 #' 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListProfiles(con)
 #' dsDisconnect(con)
 #' }
@@ -345,12 +353,13 @@ setMethod("dsListProfiles", "OpalConnection", function(conn) {
 #' @param conn \code{\link{OpalConnection-class}} class object
 #' @param type Type of the method: "aggregate" (default) or "assign".
 #' 
-#' @return A data frame with columns: name, type ('aggregate' or 'assign'), class ('function' or 'script'), value, package, version.
+#' @return A data frame with columns: name, type ('aggregate' or 'assign'), 
+#' class ('function' or 'script'), value, package, version.
 #' 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListMethods(con)
 #' dsDisconnect(con)
 #' }
@@ -374,7 +383,7 @@ setMethod("dsListMethods", "OpalConnection", function(conn, type = "aggregate") 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListPackages(con)
 #' dsDisconnect(con)
 #' }
@@ -399,7 +408,7 @@ setMethod("dsListPackages", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListWorkspaces(con)
 #' dsDisconnect(con)
 #' }
@@ -422,7 +431,7 @@ setMethod("dsListWorkspaces", "OpalConnection", function(conn) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsSaveWorkspace(con, "foo")
 #' dsListWorkspaces(con)
 #' dsDisconnect(con)
@@ -446,7 +455,7 @@ setMethod("dsSaveWorkspace", "OpalConnection", function(conn, name) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsListWorkspaces(con)
 #' dsRestoreWorkspace(con, "foo")
 #' dsDisconnect(con)
@@ -470,7 +479,7 @@ setMethod("dsRestoreWorkspace", "OpalConnection", function(conn, name) {
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsSaveWorkspace(con, "foo")
 #' dsListWorkspaces(con)
 #' dsRmWorkspace(con, "foo")
@@ -493,20 +502,26 @@ setMethod("dsRmWorkspace", "OpalConnection", function(conn, name) {
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param symbol Name of the R symbol.
 #' @param table Fully qualified name of a table in Opal.
-#' @param variables List of variable names or Javascript expression that selects the variables of a table (ignored if value does not refere to a table). See javascript documentation: https://opaldoc.obiba.org/en/latest/magma-user-guide/methods.html
-#' @param missings If TRUE, missing values will be pushed from Opal to R, default is FALSE. Ignored if value is an R expression.
-#' @param identifiers Name of the identifiers mapping to use when assigning entities to R (from Opal 2.0).
-#' @param id.name Name of the column that will contain the entity identifiers. If not specified, the identifiers
-#'   will be the data frame row names. When specified this column can be used to perform joins between data frames.
-#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-#'   the connections, when the connection supports that feature, with an extra overhead of requests.
+#' @param variables List of variable names or Javascript expression that selects 
+#' the variables of a table (ignored if value does not refere to a table). See 
+#' javascript documentation: https://opaldoc.obiba.org/en/latest/magma-user-guide/methods.html
+#' @param missings If TRUE, missing values will be pushed from Opal to R, default 
+#' is FALSE. Ignored if value is an R expression.
+#' @param identifiers Name of the identifiers mapping to use when assigning entities 
+#' to R (from Opal 2.0).
+#' @param id.name Name of the column that will contain the entity identifiers. If 
+#' not specified, the identifiers will be the data frame row names. When specified
+#' this column can be used to perform joins between data frames.
+#' @param async Whether the result of the call should be retrieved asynchronously.
+#' When TRUE (default) the calls are parallelized over the connections, when the 
+#' connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignTable(con, "D", "test.CNSIM")
 #' dsDisconnect(con)
 #' }
@@ -530,15 +545,16 @@ setMethod("dsAssignTable", "OpalConnection", function(conn, symbol, table, varia
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param symbol Name of the R symbol.
 #' @param resource Fully qualified name of a resource in Opal.
-#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-#'   the connections, when the connection supports that feature, with an extra overhead of requests.
+#' @param async Whether the result of the call should be retrieved asynchronously.
+#' When TRUE (default) the calls are parallelized over the connections, when the 
+#' connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignResource(con, "D", "test.CNSIM")
 #' dsDisconnect(con)
 #' }
@@ -562,15 +578,16 @@ setMethod("dsAssignResource", "OpalConnection", function(conn, symbol, resource,
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param symbol Name of the R symbol.
 #' @param expr A R expression with allowed assign functions calls.
-#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-#'   the connections, when the connection supports that feature, with an extra overhead of requests.
+#' @param async Whether the result of the call should be retrieved asynchronously.
+#' When TRUE (default) the calls are parallelized over the connections, when the 
+#' connection supports that feature, with an extra overhead of requests.
 #' 
 #' @return A \code{\link{OpalResult-class}} object.
 #' 
 #' @examples
 #' \dontrun{
 #' con <- dbConnect(DSOpal::Opal(), "server1",
-#'   "username", "password", "https://opal.example.org")
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignExpr(con, "C", as.symbol("c(1, 2, 3)"))
 #' dsDisconnect(con)
 #' }
@@ -594,12 +611,14 @@ setMethod("dsAssignExpr", "OpalConnection", function(conn, symbol, expr, async=T
 #'
 #' @param conn \code{\link{OpalConnection-class}} object.
 #' @param expr Expression to evaluate.
-#' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) the calls are parallelized over
-#'   the connections, when the connection supports that feature, with an extra overhead of requests.
+#' @param async Whether the result of the call should be retrieved asynchronously. 
+#' When TRUE (default) the calls are parallelized over the connections, when the 
+#' connection supports that feature, with an extra overhead of requests.
 #'
 #' @examples
 #' \dontrun{
-#' con <- dbConnect(DSOpal::Opal(), "username", "password", "https://opal.example.org")
+#' con <- dbConnect(DSOpal::Opal(), 
+#'   "administrator", "password", "https://opal-demo.obiba.org")
 #' dsAssignTable(con, "D", "test.CNSIM")
 #' dsAggregate(con, as.symbol("meanDS(D$WEIGHT)"))
 #' dsDisconnect(con)
