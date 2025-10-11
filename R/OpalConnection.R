@@ -44,7 +44,7 @@ setClass("OpalConnection", contains = "DSConnection", slots = list(name = "chara
 #' @export
 setMethod("dsConnect", "OpalDriver", 
           function(drv, name, restore = NULL, username = NULL, password = NULL, token = NULL, url = NULL, opts = list(), profile = NULL, ...) {
-            o <- opalr::opal.login(username, password, token, url, opts, profile=profile, restore=restore)
+            o <- opalr::opal.login(username, password, token, url, opts, profile=profile, restore=restore, context="datashield")
             o$name <- name
             con <- new("OpalConnection", name = name, opal = o)
             con

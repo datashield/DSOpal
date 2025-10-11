@@ -1,7 +1,9 @@
+options(verbose=FALSE)
 library(DSOpal)
 o <- dsConnect(DSOpal::Opal(), name="server1", username="administrator", password="password", url="http://localhost:8080")
 #o <- dsConnect(DSOpal::Opal(), name="server1", token="f9thEkhtXpZMoS8UEbsF09F7A8zJ1iJC", url="http://localhost:8080")
 o
+o@opal$context
 dsListTables(o)
 dsHasTable(o, "datashield.CNSIM1")
 dsHasTable(o, "datashield.CNSIM1xx")
