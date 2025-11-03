@@ -75,7 +75,7 @@ setMethod("dsIsReady", "OpalSession", function(session) {
 #' @export
 setMethod("dsStateMessage", "OpalSession", function(session) {
   if (is.null(session)) {
-    FALSE
+    "No session"
   } else {
     o <- session@conn@opal
     last_message <- utils::tail(opalr::opal.session_events(o)$message, 1)[[1]]

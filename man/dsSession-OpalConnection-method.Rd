@@ -18,8 +18,8 @@ An object of class \code{\link{OpalSession-class}} representing the remote R ses
 }
 \description{
 Create a remote R session if none exists. If a remote R session already exists,
-it will be reused. Returns a logical indicating if a remote R session exists
-accessible through this connection.
+it will be reused. Returns an object of class \code{\link{OpalSession-class}} representing
+the remote R session accessible through this connection.
 }
 \examples{
 \dontrun{

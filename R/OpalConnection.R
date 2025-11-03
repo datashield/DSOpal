@@ -277,8 +277,8 @@ setMethod("dsHasSession", "OpalConnection", function(conn) {
 #' Create a remote R session
 #' 
 #' Create a remote R session if none exists. If a remote R session already exists,
-#' it will be reused. Returns a logical indicating if a remote R session exists
-#' accessible through this connection.
+#' it will be reused. Returns an object of class \code{\link{OpalSession-class}} representing
+#' the remote R session accessible through this connection.
 #' 
 #' @param conn An object that inherits from \code{\link{OpalConnection-class}}.
 #' @param async Whether the result of the call should be retrieved asynchronously. When TRUE (default) 
@@ -320,7 +320,6 @@ setMethod("dsSession", "OpalConnection", function(conn, async=TRUE) {
 #' @import methods
 #' @export
 setMethod("dsIsAsync", "OpalConnection", function(conn) {
-  
   list(session = TRUE, aggregate = TRUE, assignTable = TRUE, assignResource = TRUE, assignExpr = TRUE)
 })
 
