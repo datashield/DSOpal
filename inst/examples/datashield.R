@@ -7,45 +7,53 @@
 library(DSOpal)
 
 # datashield logins and assignments
-data("logindata.opal.demo")
-login.data <- logindata.opal.demo
-login.data$url <- rep("http://localhost:8080", 3)
-opals <- datashield.login(login.data, assign=T, variables=c("GENDER","PM_BMI_CONTINUOUS"))
-print(opals)
+url <- "https://opal-demo.obiba.org"
+#url <- "http://localhost:8080"
+builder <- DSI::newDSLoginBuilder()
+builder$append("server1", user="administrator", password="password", url=url, profile="default")
+builder$append("server2", user="administrator", password="password", url=url, profile="default")
+builder$append("server3", user="administrator", password="password", url=url, profile="default")
+login.data <- builder$build()
+conns <- datashield.login(login.data)
+print(conns)
+
+# start remote R sessions (optional)
+datashield.sessions(conns)
+
 # check assigned variables
-datashield.symbols(opals)
+datashield.symbols(conns)
 
 # table assignment can also happen later
-datashield.assign(opals, "T", "CNSIM.CNSIM1", variables=c("GENDER","PM_BMI_CONTINUOUS"))
-datashield.aggregate(opals,'classDS(T)')
+datashield.assign.table(conns, "D", list(server1="CNSIM.CNSIM1", server2="CNSIM.CNSIM2", server3="CNSIM.CNSIM3"))
+datashield.aggregate(conns, quote(classDS("D")))
 
-# execute some aggregate calls (if these methods are available in the opals)
-datashield.aggregate(opals,'colnamesDS(D)')
-datashield.aggregate(opals,quote(lengthDS(D$GENDER)))
+# execute some aggregate calls (if these methods are available in the conns)
+datashield.aggregate(conns, quote(colnamesDS("D")))
+datashield.aggregate(conns, quote(lengthDS("D$GENDER")))
 
 # clean symbols
-datashield.rm(opals,'D')
-datashield.symbols(opals)
+datashield.rm(conns, "D")
+datashield.symbols(conns)
 
 # assign and aggregate arbitrary values
-datashield.assign(opals, "x", quote(c("1", "2", "3")))
-datashield.aggregate(opals,quote(lengthDS(x)))
-datashield.aggregate(opals,'classDS(x)')
+datashield.assign(conns, "x", quote(c("1", "2", "3")))
+datashield.aggregate(conns, quote(lengthDS("x")))
+datashield.aggregate(conns, quote(classDS(x)))
 
-datashield.methods(opals, type="aggregate")
-datashield.methods(opals$server1, type="aggregate")
-datashield.method_status(opals, type="assign")
-datashield.pkg_status(opals)
-datashield.table_status(opals, list(server1="CNSIM.CNSIM1", server2="CNSIM.CNSIM2", server3="CNSIM.CNSIM3"))
+datashield.methods(conns, type="aggregate")
+datashield.methods(conns$server1, type="aggregate")
+datashield.method_status(conns, type="assign")
+datashield.pkg_status(conns)
+datashield.table_status(conns, list(server1="CNSIM.CNSIM1", server2="CNSIM.CNSIM2", server3="CNSIM.CNSIM3"))
 
-datashield.logout(opals, save = "test")
+datashield.logout(conns, save = "test")
 
-opals <- datashield.login(logindata.opal.demo, assign=FALSE, restore = "test")
-datashield.symbols(opals)
-datashield.workspaces(opals)
-datashield.workspace_save(opals, "toto")
-datashield.workspaces(opals)
-datashield.workspace_rm(opals, "toto")
-datashield.workspaces(opals)
-datashield.logout(opals)
+conns <- datashield.login(login.data, assign=FALSE, restore = "test")
+datashield.symbols(conns)
+datashield.workspaces(conns)
+datashield.workspace_save(conns, "toto")
+datashield.workspaces(conns)
+datashield.workspace_rm(conns, "toto")
+datashield.workspaces(conns)
+datashield.logout(conns)
 
